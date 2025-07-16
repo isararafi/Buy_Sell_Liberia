@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BuySell Liberia - Analytics Assistant Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .role-header {
+            background: linear-gradient(135deg, #2D9CDB 0%, #F2C94C 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            border-radius: 10px;
+        }
+        .role-header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .role-header p {
+            margin: 10px 0 0 0;
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        .access-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .access-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-left: 4px solid #2D9CDB;
+        }
+        .restricted-card {
+            background: #fff5f5;
+            border-left: 4px solid #e74c3c;
+        }
+        .view-only-card {
+            background: #fffdf5;
+            border-left: 4px solid #F2C94C;
+        }
+        .access-card h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        .restricted-card h3 {
+            color: #e74c3c;
+        }
+        .view-only-card h3 {
+            color: #F2C94C;
+        }
+        .access-list {
+            list-style: none;
+            padding: 0;
+        }
+        .access-list li {
+            padding: 5px 0;
+            color: #555;
+            position: relative;
+            padding-left: 20px;
+        }
+        .access-list li::before {
+            content: "✅";
+            position: absolute;
+            left: 0;
+        }
+        .restricted-list li::before {
+            content: "❌";
+        }
+        .restricted-list li {
+            color: #e74c3c;
+        }
+        .view-only-list li::before {
+            content: "👁️";
+        }
+        .view-only-list li {
+            color: #F2C94C;
+        }
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .quick-action {
+            background: #2D9CDB;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            text-align: center;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        .quick-action:hover {
+            background: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="role-header">
+        <h1>📊 Analytics Assistant Dashboard</h1>
+        <p>Data Analytics & Reporting Specialist Access</p>
+    </div>
+
+    <div class="container">
+        <div class="access-grid">
+            <div class="access-card">
+                <h3>✅ Full Access Sections</h3>
+                <ul class="access-list">
+                    <li>Dashboard (Analytics Overview)</li>
+                    <li>Platform Statistics</li>
+                    <li>User Activity Metrics</li>
+                    <li>Listing Performance</li>
+                    <li>Payment Analytics</li>
+                    <li>Data Visualization</li>
+                </ul>
+            </div>
+
+            <div class="access-card view-only-card">
+                <h3>👁️ View-Only Access</h3>
+                <ul class="access-list view-only-list">
+                    <li>Revenue Center (Charts & Graphs)</li>
+                    <li>Financial Reports</li>
+                    <li>Revenue Trends</li>
+                    <li>Audit Log (Read-Only)</li>
+                    <li>System Activity</li>
+                    <li>Performance Metrics</li>
+                </ul>
+            </div>
+
+            <div class="access-card restricted-card">
+                <h3>❌ Restricted Access</h3>
+                <ul class="access-list restricted-list">
+                    <li>Users Management</li>
+                    <li>Listings Management</li>
+                    <li>Reported Listings</li>
+                    <li>Message Monitor</li>
+                    <li>Manual Payment Requests</li>
+                    <li>Monetization Settings</li>
+                    <li>Categories & Location Manager</li>
+                    <li>Announcements</li>
+                    <li>Static Page Manager</li>
+                    <li>Employee Management</li>
+                    <li>System Settings</li>
+                </ul>
+            </div>
+
+            <div class="access-card">
+                <h3>🔧 Analytics Tools</h3>
+                <ul class="access-list">
+                    <li>Data Visualization</li>
+                    <li>Report Generation</li>
+                    <li>Trend Analysis</li>
+                    <li>Performance Tracking</li>
+                    <li>Statistical Analysis</li>
+                    <li>Dashboard Creation</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="quick-actions">
+            <a href="index.html" class="quick-action">🚀 Launch Dashboard</a>
+            <a href="super-admin.html" class="quick-action">👑 Super Admin View</a>
+            <a href="manager.html" class="quick-action">👤 Manager View</a>
+            <a href="moderator.html" class="quick-action">🛡️ Moderator View</a>
+            <a href="payment-officer.html" class="quick-action">💳 Payment Officer View</a>
+            <a href="support-agent.html" class="quick-action">🤝 Support Agent View</a>
+        </div>
+
+        <div class="content-section">
+            <div class="section-title">Analytics Assistant Credentials</div>
+            <p style="background: #e8f5e8; padding: 20px; border-radius: 10px; font-size: 1.1em;">
+                <strong>Login:</strong> analytics@buysell.com<br>
+                <strong>Password:</strong> ana123<br><br>
+                <strong>Access Level:</strong> Data analysis focused role with access to platform statistics and reporting functions. Can view analytics and generate reports but cannot modify platform settings or user data.
+            </p>
+        </div>
+
+        <div class="content-section">
+            <div class="section-title">Analytics Capabilities</div>
+            <div class="access-grid">
+                <div class="access-card">
+                    <h3>📈 Dashboard Statistics</h3>
+                    <p>Access to comprehensive platform statistics including users, listings, and engagement metrics.</p>
+                </div>
+                <div class="access-card">
+                    <h3>💰 Revenue Analytics</h3>
+                    <p>View-only access to revenue charts, payment trends, and financial performance data.</p>
+                </div>
+                <div class="access-card">
+                    <h3>📋 Audit Log Review</h3>
+                    <p>Read-only access to system audit logs for activity tracking and compliance reporting.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <div class="section-title">Key Responsibilities</div>
+            <div class="access-grid">
+                <div class="access-card">
+                    <h3>📊 Data Analysis</h3>
+                    <p>Analyze platform usage patterns, user behavior, and performance metrics.</p>
+                </div>
+                <div class="access-card">
+                    <h3>📈 Report Generation</h3>
+                    <p>Create detailed reports on platform performance, trends, and key metrics.</p>
+                </div>
+                <div class="access-card">
+                    <h3>🔍 Trend Monitoring</h3>
+                    <p>Monitor platform trends and provide insights for strategic decision-making.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

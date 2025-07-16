@@ -1,0 +1,2399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BuySell Liberia - Admin Panel</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Login Page -->
+    <div class="login-container" id="loginPage">
+        <div class="login-box">
+            <div class="login-header">
+                <div class="login-logo">
+                    <img src="logo.jpeg" alt="BuySell Liberia Logo">
+                </div>
+                <div class="login-title">BuySell Liberia</div>
+                <div class="login-subtitle">Admin Panel Access</div>
+            </div>
+            <form class="login-form" onsubmit="return login(event)">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="login-btn">Sign In</button>
+            </form>
+            <div class="demo-credentials">
+                <h4>Demo Credentials:</h4>
+                <p><strong>Super Admin:</strong> admin@buysell.com / admin123</p>
+                <p><strong>Manager:</strong> manager@buysell.com / manager123</p>
+                <p><strong>Listings Moderator:</strong> moderator@buysell.com / mod123</p>
+                <p><strong>Payment Officer:</strong> payments@buysell.com / pay123</p>
+                <p><strong>Support Agent:</strong> support@buysell.com / sup123</p>
+                <p><strong>Analytics Assistant:</strong> analytics@buysell.com / ana123</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Admin Panel -->
+    <div class="container" id="adminPanel">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="logo.jpeg" alt="BuySell Liberia Logo">
+                </div>
+                <div class="logo-text">
+                    BuySell Liberia
+                    <div class="role-indicator" id="roleIndicator" style="font-size: 12px; color: #f39c12; margin-top: 5px; display: none;"></div>
+                </div>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active" onclick="showSection('dashboard')">
+                            <span class="nav-icon">📊</span>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" onclick="showSection('users')">
+                            <span class="nav-icon">👥</span>
+                            Users
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" onclick="showSection('listings')">
+                            <span class="nav-icon">📦</span>
+                            Listings
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" onclick="showSection('reports')">
+                            <span class="nav-icon">🚨</span>
+                            Reported Listings
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" onclick="showSection('messages')">
+                            <span class="nav-icon">💬</span>
+                            Message Monitor
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" onclick="showSection('payments')">
+                            <span class="nav-icon">💳</span>
+                            Manual Payment Requests
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" onclick="showSection('revenue')">
+                            <span class="nav-icon">💰</span>
+                            Revenue Center
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" onclick="showSection('monetization')">
+                            <span class="nav-icon">⚙️</span>
+                            Monetization Settings
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" onclick="showSection('categories')">
+                            <span class="nav-icon">🏷️</span>
+                            Categories & Location Manager
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" onclick="showSection('announcements')">
+                            <span class="nav-icon">📢</span>
+                            Announcements
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" onclick="showSection('pages')">
+                            <span class="nav-icon">📄</span>
+                            Static Page Manager
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" onclick="showSection('employees')">
+                            <span class="nav-icon">👨‍💼</span>
+                            Employee Management
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" onclick="showSection('audit')">
+                            <span class="nav-icon">📋</span>
+                            Audit Log
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" onclick="showSection('settings')">
+                            <span class="nav-icon">🔧</span>
+                            System Settings
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard View -->
+            <div class="content-view active" id="dashboard">
+                <!-- Header -->
+                <div class="header">
+                    <h1>Dashboard</h1>
+                    <div class="user-info">
+                        <div class="user-avatar">SA</div>
+                        <div>
+                            <div style="font-weight: 600;">Super Admin</div>
+                            <div style="font-size: 12px; color: #7f8c8d;">admin@buysell.com</div>
+                        </div>
+                        <button class="logout-btn" onclick="logout()">Logout</button>
+                    </div>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon users">👥</div>
+                        </div>
+                        <div class="stat-value">12,540</div>
+                        <div class="stat-label">Total Registered Users</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon listings">⭐</div>
+                        </div>
+                        <div class="stat-value">8,312</div>
+                        <div class="stat-label">Total Active Listings</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon expiry">⏰</div>
+                        </div>
+                        <div class="stat-value">254</div>
+                        <div class="stat-label">Listings Near Expiry</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon payments">💳</div>
+                        </div>
+                        <div class="stat-value">129</div>
+                        <div class="stat-label">Manual Payment Requests (Pending)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon reports">🚨</div>
+                        </div>
+                        <div class="stat-value">35</div>
+                        <div class="stat-label">Reported Listings</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon revenue">💰</div>
+                        </div>
+                        <div class="stat-value">L$ 24,500</div>
+                        <div class="stat-label">Revenue Snapshot</div>
+                    </div>
+                </div>
+
+                <!-- Recent Listings -->
+                <div class="content-section">
+                    <div class="section-title">Recent Listings</div>
+                    <div class="filters">
+                        <div class="filter-group">
+                            <label>Category</label>
+                            <select>
+                                <option value="">All Categories</option>
+                                <option value="mobile">Mobile Phones</option>
+                                <option value="cars">Cars</option>
+                                <option value="apartments">Apartments</option>
+                                <option value="furniture">Home & Furniture</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label>Status</label>
+                            <select>
+                                <option value="">All Status</option>
+                                <option value="active">Active</option>
+                                <option value="pending">Pending</option>
+                                <option value="expired">Expired</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label>Location</label>
+                            <select>
+                                <option value="">All Locations</option>
+                                <option value="monrovia">Monrovia</option>
+                                <option value="buchanan">Buchanan</option>
+                                <option value="gbarnga">Gbarnga</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label>Date Range</label>
+                            <input type="date" value="2024-01-01">
+                        </div>
+                    </div>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>User</th>
+                                    <th>Category</th>
+                                    <th>Location</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>iPhone 13 Pro Max</td>
+                                    <td>John Doe</td>
+                                    <td>Mobile Phones</td>
+                                    <td>Monrovia</td>
+                                    <td><span class="status-badge status-active">Active</span></td>
+                                    <td>
+                                        <button class="btn btn-success">Approve</button>
+                                        <button class="btn btn-warning">Feature</button>
+                                        <button class="btn btn-danger">Delete</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Toyota Camry 2015</td>
+                                    <td>Jana Smith</td>
+                                    <td>Cars</td>
+                                    <td>Buchanan</td>
+                                    <td><span class="status-badge status-pending">Pending</span></td>
+                                    <td>
+                                        <button class="btn btn-success">Approve</button>
+                                        <button class="btn btn-warning">Feature</button>
+                                        <button class="btn btn-danger">Delete</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Apartment in Snikor</td>
+                                    <td>Alice Johnson</td>
+                                    <td>Apartments for Year</td>
+                                    <td>Monrovia</td>
+                                    <td><span class="status-badge status-active">Active</span></td>
+                                    <td>
+                                        <button class="btn btn-success">Approve</button>
+                                        <button class="btn btn-warning">Feature</button>
+                                        <button class="btn btn-danger">Delete</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Dining Table Set</td>
+                                    <td>Michael Brown</td>
+                                    <td>Home & Furniture</td>
+                                    <td>Gbarnga</td>
+                                    <td><span class="status-badge status-active">Active</span></td>
+                                    <td>
+                                        <button class="btn btn-success">Approve</button>
+                                        <button class="btn btn-warning">Feature</button>
+                                        <button class="btn btn-danger">Delete</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Manual Payment Requests -->
+                <div class="content-section">
+                    <div class="section-title">Manual Payment Requests</div>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>User</th>
+                                    <th>Amount</th>
+                                    <th>Method</th>
+                                    <th>Feature Type</th>
+                                    <th>Listing</th>
+                                    <th>Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>John Doe</td>
+                                    <td>L$ 5,000</td>
+                                    <td>MTN</td>
+                                    <td>Featured Listing</td>
+                                    <td>Mercedes Benz G</td>
+                                    <td>04/23/24</td>
+                                    <td>
+                                        <button class="btn btn-success">Approve</button>
+                                        <button class="btn btn-danger">Reject</button>
+                                        <button class="btn btn-primary" onclick="showModal('paymentModal')">View Details</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Jana Smith</td>
+                                    <td>L$ 3,000</td>
+                                    <td>Orange</td>
+                                    <td>Business Plan</td>
+                                    <td>Buszanan</td>
+                                    <td>04/22/24</td>
+                                    <td>
+                                        <button class="btn btn-success">Approve</button>
+                                        <button class="btn btn-danger">Reject</button>
+                                        <button class="btn btn-primary" onclick="showModal('paymentModal')">View Details</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Alice Johnson</td>
+                                    <td>L$ 2,500</td>
+                                    <td>Bank Transfer</td>
+                                    <td>Ad Placement</td>
+                                    <td>Gbarnga</td>
+                                    <td>04/21/24</td>
+                                    <td>
+                                        <button class="btn btn-success">Approve</button>
+                                        <button class="btn btn-danger">Reject</button>
+                                        <button class="btn btn-primary" onclick="showModal('paymentModal')">View Details</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- System Settings Quick Access -->
+                <div class="content-section">
+                    <div class="section-title">System Settings Quick Access</div>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-header">
+                                <div class="stat-icon revenue">💰</div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <div class="stat-label">Monetization</div>
+                                    <div style="font-size: 14px; color: #27ae60;">Currently ON</div>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-header">
+                                <div class="stat-icon users">👥</div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <div class="stat-label">User Registration</div>
+                                    <div style="font-size: 14px; color: #27ae60;">Currently ON</div>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-header">
+                                <div class="stat-icon listings">⚙️</div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <div class="stat-label">Maintenance Mode</div>
+                                    <div style="font-size: 14px; color: #e74c3c;">Currently OFF</div>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Users Management View -->
+            <div class="content-view" id="users">
+                <div class="header">
+                    <h1>User Management</h1>
+                    <div class="manager-actions" id="userExportActions" style="display: none;">
+                        <button class="btn btn-primary" onclick="exportUsers('csv')">Export CSV</button>
+                        <button class="btn btn-primary" onclick="exportUsers('pdf')">Export PDF</button>
+                    </div>
+                </div>
+                
+                <div class="content-section">
+                    <div class="section-title">Platform Registration System</div>
+                    <p style="background: #e8f5e8; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+                        <strong>User Registration:</strong> Users can register on the platform with name, email, and phone number. Once registered, they can create listings, make payments, message other users, and report inappropriate content. Admins can manage all user accounts including ban/unban and password reset functions.
+                    </p>
+                </div>
+
+                <div class="content-section">
+                    <div class="section-title">All Users</div>
+                    <div class="filters">
+                        <div class="filter-group">
+                            <label>Status</label>
+                            <select>
+                                <option value="">All Status</option>
+                                <option value="active">Active</option>
+                                <option value="banned">Banned</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label>Registration Date</label>
+                            <input type="date">
+                        </div>
+                        <div class="filter-group">
+                            <label>Search</label>
+                            <input type="text" placeholder="Search by name or email">
+                        </div>
+                    </div>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Status</th>
+                                    <th>Registration Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>John Doe</td>
+                                    <td>john@example.com</td>
+                                    <td>+231 77 123 4567</td>
+                                    <td><span class="status-badge status-active">Active</span></td>
+                                    <td>01/15/24</td>
+                                    <td>
+                                        <button class="btn btn-primary" onclick="showModal('userProfileModal')">View Profile</button>
+                                        <button class="btn btn-warning">Reset Password</button>
+                                        <button class="btn btn-danger">Ban User</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Jana Smith</td>
+                                    <td>jana@example.com</td>
+                                    <td>+231 88 987 6543</td>
+                                    <td><span class="status-badge status-banned">Banned</span></td>
+                                    <td>02/20/24</td>
+                                    <td>
+                                        <button class="btn btn-primary">View Profile</button>
+                                        <button class="btn btn-warning">Reset Password</button>
+                                        <button class="btn btn-success">Unban User</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Alice Johnson</td>
+                                    <td>alice@example.com</td>
+                                    <td>+231 77 555 1234</td>
+                                    <td><span class="status-badge status-active">Active</span></td>
+                                    <td>03/10/24</td>
+                                    <td>
+                                        <button class="btn btn-primary">View Profile</button>
+                                        <button class="btn btn-warning">Reset Password</button>
+                                        <button class="btn btn-danger">Ban User</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Listings Management View -->
+            <div class="content-view" id="listings">
+                <div class="header">
+                    <h1>Listings Management</h1>
+                </div>
+                <div class="content-section">
+                    <div class="section-title">All Listings</div>
+                    <div class="filters">
+                        <div class="filter-group">
+                            <label>Category</label>
+                            <select>
+                                <option value="">All Categories</option>
+                                <option value="mobile">Mobile Phones</option>
+                                <option value="cars">Cars</option>
+                                <option value="apartments">Apartments</option>
+                                <option value="furniture">Home & Furniture</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label>Status</label>
+                            <select>
+                                <option value="">All Status</option>
+                                <option value="active">Active</option>
+                                <option value="pending">Pending</option>
+                                <option value="expired">Expired</option>
+                                <option value="sold">Sold</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label>Price Range</label>
+                            <input type="text" placeholder="Min - Max">
+                        </div>
+                        <div class="filter-group">
+                            <label>Condition</label>
+                            <select>
+                                <option value="">All Conditions</option>
+                                <option value="new">New</option>
+                                <option value="used">Used</option>
+                                <option value="refurbished">Refurbished</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>User</th>
+                                    <th>Category</th>
+                                    <th>Price</th>
+                                    <th>Status</th>
+                                    <th>Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>iPhone 13 Pro Max</td>
+                                    <td>John Doe</td>
+                                    <td>Mobile Phones</td>
+                                    <td>L$ 85,000</td>
+                                    <td><span class="status-badge status-active">Active</span></td>
+                                    <td>04/20/24</td>
+                                    <td>
+                                        <button class="btn btn-success">Approve</button>
+                                        <button class="btn btn-warning">Feature</button>
+                                        <button class="btn btn-primary">Mark Sold</button>
+                                        <button class="btn btn-danger">Delete</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Toyota Camry 2015</td>
+                                    <td>Jana Smith</td>
+                                    <td>Cars</td>
+                                    <td>L$ 1,200,000</td>
+                                    <td><span class="status-badge status-pending">Pending</span></td>
+                                    <td>04/19/24</td>
+                                    <td>
+                                        <button class="btn btn-success">Approve</button>
+                                        <button class="btn btn-warning">Feature</button>
+                                        <button class="btn btn-primary">Mark Sold</button>
+                                        <button class="btn btn-danger">Delete</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reported Listings View -->
+            <div class="content-view" id="reports">
+                <div class="header">
+                    <h1>Reported Listings</h1>
+                </div>
+                
+                <div class="content-section">
+                    <div class="section-title">User Reporting System</div>
+                    <p style="background: #e8f5e8; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+                        <strong>Platform Feature:</strong> Users can report listings they find suspicious, inappropriate, or fraudulent. Common reports include scams, fake items, duplicate listings, and inappropriate content. All reports are reviewed by admins.
+                    </p>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-header">
+                                <div class="stat-icon">🚨</div>
+                            </div>
+                            <div class="stat-value">35</div>
+                            <div class="stat-label">Active Reports</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-header">
+                                <div class="stat-icon">✅</div>
+                            </div>
+                            <div class="stat-value">289</div>
+                            <div class="stat-label">Resolved This Month</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-header">
+                                <div class="stat-icon">❌</div>
+                            </div>
+                            <div class="stat-value">12</div>
+                            <div class="stat-label">Listings Removed</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-header">
+                                <div class="stat-icon">⚠️</div>
+                            </div>
+                            <div class="stat-value">8</div>
+                            <div class="stat-label">Users Warned</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <div class="section-title">Flagged Posts</div>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Listing Title</th>
+                                    <th>Report Type</th>
+                                    <th>Reported By</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Fake iPhone 14</td>
+                                    <td>Scam/Fraud</td>
+                                    <td>Jane Smith</td>
+                                    <td>04/22/24</td>
+                                    <td><span class="status-badge status-pending">Pending</span></td>
+                                    <td>
+                                        <button class="btn btn-primary">View Details</button>
+                                        <button class="btn btn-success">Approve Listing</button>
+                                        <button class="btn btn-danger">Remove Listing</button>
+                                        <button class="btn btn-warning">Warn User</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Duplicate Car Ad</td>
+                                    <td>Duplicate</td>
+                                    <td>Alice Johnson</td>
+                                    <td>04/21/24</td>
+                                    <td><span class="status-badge status-approved">Resolved</span></td>
+                                    <td>
+                                        <button class="btn btn-primary">View Details</button>
+                                        <button class="btn btn-success">Approve Listing</button>
+                                        <button class="btn btn-danger">Remove Listing</button>
+                                        <button class="btn btn-warning">Warn User</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Inappropriate Content</td>
+                                    <td>Inappropriate</td>
+                                    <td>Mike Brown</td>
+                                    <td>04/20/24</td>
+                                    <td><span class="status-badge status-pending">Pending</span></td>
+                                    <td>
+                                        <button class="btn btn-primary">View Details</button>
+                                        <button class="btn btn-success">Approve Listing</button>
+                                        <button class="btn btn-danger">Remove Listing</button>
+                                        <button class="btn btn-warning">Warn User</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Overpriced Electronics</td>
+                                    <td>Suspicious Price</td>
+                                    <td>Sarah Wilson</td>
+                                    <td>04/19/24</td>
+                                    <td><span class="status-badge status-approved">Resolved</span></td>
+                                    <td>
+                                        <button class="btn btn-primary">View Details</button>
+                                        <button class="btn btn-success">Approve Listing</button>
+                                        <button class="btn btn-danger">Remove Listing</button>
+                                        <button class="btn btn-warning">Warn User</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Message Monitor View -->
+            <div class="content-view" id="messages">
+                <div class="header">
+                    <h1>Message Monitor</h1>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon">💬</div>
+                        </div>
+                        <div class="stat-value">15,240</div>
+                        <div class="stat-label">Total Messages Today</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon">👥</div>
+                        </div>
+                        <div class="stat-value">2,845</div>
+                        <div class="stat-label">Active Conversations</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon">🚨</div>
+                        </div>
+                        <div class="stat-value">18</div>
+                        <div class="stat-label">Flagged Messages</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon">⚠️</div>
+                        </div>
+                        <div class="stat-value">3</div>
+                        <div class="stat-label">Blocked Users</div>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <div class="section-title">User Messaging Activity</div>
+                    <p style="background: #e8f5e8; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+                        <strong>Platform Features:</strong> Users can message each other about listings, negotiate prices, arrange meetups, and share contact information. All messages are monitored for spam, abuse, and inappropriate content.
+                    </p>
+                    
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Conversation</th>
+                                    <th>Last Message</th>
+                                    <th>Listing</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>John Doe ↔ Jane Smith</td>
+                                    <td>Is this phone still available? I'm interested...</td>
+                                    <td>iPhone 13 Pro Max</td>
+                                    <td>04/23/24</td>
+                                    <td><span class="status-badge status-active">Active</span></td>
+                                    <td>
+                                        <button class="btn btn-primary">View Conversation</button>
+                                        <button class="btn btn-warning">Monitor</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Alice Johnson ↔ Bob Wilson</td>
+                                    <td>Can you meet at Congo Town market tomorrow?</td>
+                                    <td>Toyota Camry 2015</td>
+                                    <td>04/22/24</td>
+                                    <td><span class="status-badge status-active">Active</span></td>
+                                    <td>
+                                        <button class="btn btn-primary">View Conversation</button>
+                                        <button class="btn btn-warning">Monitor</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Mike Brown ↔ Sarah Wilson</td>
+                                    <td>Payment completed via MTN. Receipt attached.</td>
+                                    <td>Apartment in Snikor</td>
+                                    <td>04/21/24</td>
+                                    <td><span class="status-badge status-active">Active</span></td>
+                                    <td>
+                                        <button class="btn btn-primary">View Conversation</button>
+                                        <button class="btn btn-warning">Monitor</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <div class="section-title">Flagged Conversations</div>
+                    <div class="filters">
+                        <div class="filter-group">
+                            <label>Search by User</label>
+                            <input type="text" placeholder="Enter username">
+                        </div>
+                        <div class="filter-group">
+                            <label>Search by Keyword</label>
+                            <input type="text" placeholder="Enter keyword">
+                        </div>
+                        <div class="filter-group">
+                            <label>Date Range</label>
+                            <input type="date">
+                        </div>
+                    </div>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Users</th>
+                                    <th>Last Message</th>
+                                    <th>Flag Reason</th>
+                                    <th>Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>John Doe ↔ Jane Smith</td>
+                                    <td>This is spam content...</td>
+                                    <td>Spam</td>
+                                    <td>04/23/24</td>
+                                    <td>
+                                        <button class="btn btn-primary">View Conversation</button>
+                                        <button class="btn btn-danger">Delete Messages</button>
+                                        <button class="btn btn-warning">Block User</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Alice Johnson ↔ Bob Wilson</td>
+                                    <td>Abusive language detected...</td>
+                                    <td>Abuse</td>
+                                    <td>04/22/24</td>
+                                    <td>
+                                        <button class="btn btn-primary">View Conversation</button>
+                                        <button class="btn btn-danger">Delete Messages</button>
+                                        <button class="btn btn-warning">Block User</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Manual Payment Requests View -->
+            <div class="content-view" id="payments">
+                <div class="header">
+                    <h1>Manual Payment Requests</h1>
+                </div>
+                
+                <div class="content-section">
+                    <div class="section-title">Payment System Overview</div>
+                    <p style="background: #e8f5e8; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+                        <strong>User Payment Process:</strong> Users can make payments through MTN Money, Orange Money, or Bank Transfer. After making payments, users submit payment confirmations with screenshots for manual verification by admins.
+                    </p>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-header">
+                                <div class="stat-icon">💳</div>
+                            </div>
+                            <div class="stat-value">129</div>
+                            <div class="stat-label">Pending Requests</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-header">
+                                <div class="stat-icon">✅</div>
+                            </div>
+                            <div class="stat-value">856</div>
+                            <div class="stat-label">Approved This Month</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-header">
+                                <div class="stat-icon">❌</div>
+                            </div>
+                            <div class="stat-value">23</div>
+                            <div class="stat-label">Rejected This Month</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-header">
+                                <div class="stat-icon">📊</div>
+                            </div>
+                            <div class="stat-value">97.3%</div>
+                            <div class="stat-label">Approval Rate</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <div class="section-title">Payment Submissions</div>
+                    <div class="filters">
+                        <div class="filter-group">
+                            <label>Status</label>
+                            <select>
+                                <option value="">All Status</option>
+                                <option value="pending">Pending</option>
+                                <option value="approved">Approved</option>
+                                <option value="rejected">Rejected</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label>Payment Method</label>
+                            <select>
+                                <option value="">All Methods</option>
+                                <option value="mtn">MTN Money</option>
+                                <option value="orange">Orange Money</option>
+                                <option value="bank">Bank Transfer</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label>Date Range</label>
+                            <input type="date">
+                        </div>
+                    </div>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>User</th>
+                                    <th>Amount</th>
+                                    <th>Method</th>
+                                    <th>Feature Type</th>
+                                    <th>Listing</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>John Doe</td>
+                                    <td>L$ 5,000</td>
+                                    <td>MTN Money</td>
+                                    <td>Featured Listing</td>
+                                    <td>iPhone 13 Pro Max</td>
+                                    <td>04/23/24</td>
+                                    <td><span class="status-badge status-pending">Pending</span></td>
+                                    <td>
+                                        <button class="btn btn-success">Approve</button>
+                                        <button class="btn btn-danger">Reject</button>
+                                        <button class="btn btn-primary" onclick="showModal('paymentModal')">View Details</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Jana Smith</td>
+                                    <td>L$ 3,000</td>
+                                    <td>Orange Money</td>
+                                    <td>Business Plan</td>
+                                    <td>Business Account</td>
+                                    <td>04/22/24</td>
+                                    <td><span class="status-badge status-approved">Approved</span></td>
+                                    <td>
+                                        <button class="btn btn-success">Approve</button>
+                                        <button class="btn btn-danger">Reject</button>
+                                        <button class="btn btn-primary" onclick="showModal('paymentModal')">View Details</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Alice Johnson</td>
+                                    <td>L$ 15,000</td>
+                                    <td>Bank Transfer</td>
+                                    <td>Business Plan</td>
+                                    <td>Business Account</td>
+                                    <td>04/21/24</td>
+                                    <td><span class="status-badge status-approved">Approved</span></td>
+                                    <td>
+                                        <button class="btn btn-success">Approve</button>
+                                        <button class="btn btn-danger">Reject</button>
+                                        <button class="btn btn-primary" onclick="showModal('paymentModal')">View Details</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Mike Brown</td>
+                                    <td>L$ 2,500</td>
+                                    <td>MTN Money</td>
+                                    <td>Ad Placement</td>
+                                    <td>Toyota Camry 2015</td>
+                                    <td>04/20/24</td>
+                                    <td><span class="status-badge status-rejected">Rejected</span></td>
+                                    <td>
+                                        <button class="btn btn-success">Approve</button>
+                                        <button class="btn btn-danger">Reject</button>
+                                        <button class="btn btn-primary" onclick="showModal('paymentModal')">View Details</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Sarah Wilson</td>
+                                    <td>L$ 8,000</td>
+                                    <td>Orange Money</td>
+                                    <td>Featured Listing</td>
+                                    <td>Apartment in Snikor</td>
+                                    <td>04/19/24</td>
+                                    <td><span class="status-badge status-pending">Pending</span></td>
+                                    <td>
+                                        <button class="btn btn-success">Approve</button>
+                                        <button class="btn btn-danger">Reject</button>
+                                        <button class="btn btn-primary" onclick="showModal('paymentModal')">View Details</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Revenue Center View -->
+            <div class="content-view" id="revenue">
+                <div class="header">
+                    <h1>Revenue Center</h1>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon revenue">💰</div>
+                        </div>
+                        <div class="stat-value">L$ 124,500</div>
+                        <div class="stat-label">Total Revenue</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon listings">📦</div>
+                        </div>
+                        <div class="stat-value">L$ 85,000</div>
+                        <div class="stat-label">Featured Listings</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon users">👥</div>
+                        </div>
+                        <div class="stat-value">L$ 25,500</div>
+                        <div class="stat-label">Business Subscriptions</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon payments">📢</div>
+                        </div>
+                        <div class="stat-value">L$ 14,000</div>
+                        <div class="stat-label">Ad Placements</div>
+                    </div>
+                </div>
+
+                <div class="grid-2">
+                    <div class="chart-container">
+                        <div class="chart-title">Monthly Revenue</div>
+                        <div class="bar-chart">
+                            <div class="bar" style="height: 60%;">
+                                15K
+                                <div class="bar-label">Jan</div>
+                            </div>
+                            <div class="bar secondary" style="height: 80%;">
+                                20K
+                                <div class="bar-label">Feb</div>
+                            </div>
+                            <div class="bar success" style="height: 90%;">
+                                25K
+                                <div class="bar-label">Mar</div>
+                            </div>
+                            <div class="bar" style="height: 70%;">
+                                18K
+                                <div class="bar-label">Apr</div>
+                            </div>
+                            <div class="bar secondary" style="height: 85%;">
+                                22K
+                                <div class="bar-label">May</div>
+                            </div>
+                            <div class="bar success" style="height: 95%;">
+                                28K
+                                <div class="bar-label">Jun</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chart-container">
+                        <div class="chart-title">Revenue by Feature Type</div>
+                        <div class="pie-chart"></div>
+                        <div class="chart-legend">
+                            <div class="legend-item">
+                                <div class="legend-color" style="background-color: #3498db;"></div>
+                                <span>Featured Listings (40%)</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background-color: #f39c12;"></div>
+                                <span>Business Plans (30%)</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background-color: #27ae60;"></div>
+                                <span>Ad Placements (20%)</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color" style="background-color: #e74c3c;"></div>
+                                <span>Other (10%)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <div class="section-title">Payment Method Breakdown</div>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Payment Method</th>
+                                    <th>Transactions</th>
+                                    <th>Total Amount</th>
+                                    <th>Percentage</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>MTN Money</td>
+                                    <td>156</td>
+                                    <td>L$ 65,000</td>
+                                    <td>52%</td>
+                                </tr>
+                                <tr>
+                                    <td>Orange Money</td>
+                                    <td>89</td>
+                                    <td>L$ 35,500</td>
+                                    <td>29%</td>
+                                </tr>
+                                <tr>
+                                    <td>Bank Transfer</td>
+                                    <td>45</td>
+                                    <td>L$ 24,000</td>
+                                    <td>19%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Monetization Settings View -->
+            <div class="content-view" id="monetization">
+                <div class="header">
+                    <h1>Monetization Settings</h1>
+                </div>
+                
+                <div class="content-section">
+                    <div class="section-title">Feature Pricing</div>
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label>Featured Listing Price</label>
+                            <input type="number" value="5000" placeholder="Enter price in LRD">
+                        </div>
+                        <div class="form-group">
+                            <label>Business Subscription (Monthly)</label>
+                            <input type="number" value="15000" placeholder="Enter price in LRD">
+                        </div>
+                        <div class="form-group">
+                            <label>Ad Placement Price</label>
+                            <input type="number" value="2500" placeholder="Enter price in LRD">
+                        </div>
+                        <div class="form-group">
+                            <label>Premium Support</label>
+                            <input type="number" value="1000" placeholder="Enter price in LRD">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <div class="section-title">Payment Information</div>
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label>MTN Money Number</label>
+                            <input type="text" value="+231 77 123 4567" placeholder="Enter MTN number">
+                        </div>
+                        <div class="form-group">
+                            <label>Orange Money Number</label>
+                            <input type="text" value="+231 88 987 6543" placeholder="Enter Orange number">
+                        </div>
+                        <div class="form-group">
+                            <label>Bank Name</label>
+                            <input type="text" value="Liberia Bank for Development" placeholder="Enter bank name">
+                        </div>
+                        <div class="form-group">
+                            <label>Bank Account Number</label>
+                            <input type="text" value="1234567890" placeholder="Enter account number">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <div class="section-title">Monetization Controls</div>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <div class="stat-label">Enable Monetization</div>
+                                    <div style="font-size: 14px; color: #27ae60;">Currently ON</div>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <div class="stat-label">Auto-Approve Payments</div>
+                                    <div style="font-size: 14px; color: #e74c3c;">Currently OFF</div>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Categories & Location Manager View -->
+            <div class="content-view" id="categories">
+                <div class="header">
+                    <h1>Categories & Location Manager</h1>
+                </div>
+                
+                <div class="grid-2">
+                    <div class="content-section">
+                        <div class="section-title">Categories</div>
+                        <button class="btn btn-primary" style="margin-bottom: 15px;">Add New Category</button>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Category Name</th>
+                                        <th>Subcategories</th>
+                                        <th>Order</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Mobile Phones</td>
+                                        <td>5</td>
+                                        <td>1</td>
+                                        <td>
+                                            <button class="btn btn-warning">Edit</button>
+                                            <button class="btn btn-danger">Delete</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Cars</td>
+                                        <td>8</td>
+                                        <td>2</td>
+                                        <td>
+                                            <button class="btn btn-warning">Edit</button>
+                                            <button class="btn btn-danger">Delete</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Apartments</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                        <td>
+                                            <button class="btn btn-warning">Edit</button>
+                                            <button class="btn btn-danger">Delete</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="content-section">
+                        <div class="section-title">Locations</div>
+                        <button class="btn btn-primary" style="margin-bottom: 15px;">Add New Location</button>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>County</th>
+                                        <th>Cities</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Montserrado</td>
+                                        <td>12</td>
+                                        <td>
+                                            <button class="btn btn-warning">Edit</button>
+                                            <button class="btn btn-danger">Delete</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Grand Bassa</td>
+                                        <td>8</td>
+                                        <td>
+                                            <button class="btn btn-warning">Edit</button>
+                                            <button class="btn btn-danger">Delete</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Bong</td>
+                                        <td>6</td>
+                                        <td>
+                                            <button class="btn btn-warning">Edit</button>
+                                            <button class="btn btn-danger">Delete</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Announcements View -->
+            <div class="content-view" id="announcements">
+                <div class="header">
+                    <h1>Announcements</h1>
+                </div>
+                
+                <div class="content-section">
+                    <div class="section-title">Create New Announcement</div>
+                    <div class="form-group">
+                        <label>Announcement Title</label>
+                        <input type="text" placeholder="Enter announcement title">
+                    </div>
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea placeholder="Enter your announcement message"></textarea>
+                    </div>
+                    <div class="grid-3">
+                        <div class="form-group">
+                            <label>Type</label>
+                            <select>
+                                <option value="popup">Popup</option>
+                                <option value="email">Email</option>
+                                <option value="banner">Banner</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Priority</label>
+                            <select>
+                                <option value="low">Low</option>
+                                <option value="medium">Medium</option>
+                                <option value="high">High</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Expiry Date</label>
+                            <input type="date">
+                        </div>
+                    </div>
+                    <button class="btn btn-primary">Send Announcement</button>
+                </div>
+
+                <div class="content-section">
+                    <div class="section-title">Recent Announcements</div>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Type</th>
+                                    <th>Priority</th>
+                                    <th>Date Sent</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Platform Maintenance Notice</td>
+                                    <td>Email</td>
+                                    <td>High</td>
+                                    <td>04/20/24</td>
+                                    <td><span class="status-badge status-active">Active</span></td>
+                                    <td>
+                                        <button class="btn btn-warning">Edit</button>
+                                        <button class="btn btn-danger">Delete</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>New Feature Launch</td>
+                                    <td>Banner</td>
+                                    <td>Medium</td>
+                                    <td>04/18/24</td>
+                                    <td><span class="status-badge status-expired">Expired</span></td>
+                                    <td>
+                                        <button class="btn btn-warning">Edit</button>
+                                        <button class="btn btn-danger">Delete</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Static Page Manager View -->
+            <div class="content-view" id="pages">
+                <div class="header">
+                    <h1>Static Page Manager</h1>
+                </div>
+                
+                <div class="content-section">
+                    <div class="section-title">Platform Pages</div>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Page Name</th>
+                                    <th>Last Updated</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>About Us</td>
+                                    <td>04/15/24</td>
+                                    <td><span class="status-badge status-active">Published</span></td>
+                                    <td>
+                                        <button class="btn btn-primary">Edit</button>
+                                        <button class="btn btn-warning">Preview</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Privacy Policy</td>
+                                    <td>04/12/24</td>
+                                    <td><span class="status-badge status-active">Published</span></td>
+                                    <td>
+                                        <button class="btn btn-primary">Edit</button>
+                                        <button class="btn btn-warning">Preview</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Terms of Use</td>
+                                    <td>04/10/24</td>
+                                    <td><span class="status-badge status-active">Published</span></td>
+                                    <td>
+                                        <button class="btn btn-primary">Edit</button>
+                                        <button class="btn btn-warning">Preview</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>FAQ/Help Center</td>
+                                    <td>04/08/24</td>
+                                    <td><span class="status-badge status-pending">Draft</span></td>
+                                    <td>
+                                        <button class="btn btn-primary">Edit</button>
+                                        <button class="btn btn-warning">Preview</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Employee Management View -->
+            <div class="content-view" id="employees">
+                <div class="header">
+                    <h1>Employee Management</h1>
+                </div>
+                
+                <div class="content-section">
+                    <div class="section-title">Add New Employee</div>
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" placeholder="Enter full name">
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" placeholder="Enter email address">
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" placeholder="Enter password">
+                        </div>
+                        <div class="form-group">
+                            <label>Role</label>
+                            <select>
+                                <option value="moderator">Moderator</option>
+                                <option value="payment">Payment Officer</option>
+                                <option value="support">Support Agent</option>
+                                <option value="custom">Custom Role</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary">Add Employee</button>
+                </div>
+
+                <div class="content-section">
+                    <div class="section-title">Current Employees</div>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>Status</th>
+                                    <th>Last Login</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>John Moderator</td>
+                                    <td>john.mod@buysell.com</td>
+                                    <td>Moderator</td>
+                                    <td><span class="status-badge status-active">Active</span></td>
+                                    <td>04/23/24</td>
+                                    <td>
+                                        <button class="btn btn-warning">Edit</button>
+                                        <button class="btn btn-danger">Deactivate</button>
+                                        <button class="btn btn-primary">View Activity</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Sarah Payment</td>
+                                    <td>sarah.pay@buysell.com</td>
+                                    <td>Payment Officer</td>
+                                    <td><span class="status-badge status-active">Active</span></td>
+                                    <td>04/22/24</td>
+                                    <td>
+                                        <button class="btn btn-warning">Edit</button>
+                                        <button class="btn btn-danger">Deactivate</button>
+                                        <button class="btn btn-primary">View Activity</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Audit Log View -->
+            <div class="content-view" id="audit">
+                <div class="header">
+                    <h1>Audit Log</h1>
+                </div>
+                
+                <div class="content-section">
+                    <div class="section-title">System Activity</div>
+                    <div class="filters">
+                        <div class="filter-group">
+                            <label>Employee</label>
+                            <select>
+                                <option value="">All Employees</option>
+                                <option value="admin">Super Admin</option>
+                                <option value="john">John Moderator</option>
+                                <option value="sarah">Sarah Payment</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label>Action Type</label>
+                            <select>
+                                <option value="">All Actions</option>
+                                <option value="listing">Listing Actions</option>
+                                <option value="payment">Payment Actions</option>
+                                <option value="user">User Actions</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label>Date Range</label>
+                            <input type="date">
+                        </div>
+                    </div>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Employee</th>
+                                    <th>Action</th>
+                                    <th>Target</th>
+                                    <th>Date & Time</th>
+                                    <th>Details</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Super Admin</td>
+                                    <td>Approved Listing</td>
+                                    <td>iPhone 13 Pro Max</td>
+                                    <td>04/23/24 10:30 AM</td>
+                                    <td>Listing ID: 12345</td>
+                                </tr>
+                                <tr>
+                                    <td>John Moderator</td>
+                                    <td>Banned User</td>
+                                    <td>user@example.com</td>
+                                    <td>04/22/24 03:45 PM</td>
+                                    <td>Reason: Spam</td>
+                                </tr>
+                                <tr>
+                                    <td>Sarah Payment</td>
+                                    <td>Approved Payment</td>
+                                    <td>L$ 5,000 - John Doe</td>
+                                    <td>04/22/24 11:15 AM</td>
+                                    <td>Payment ID: PAY789</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- System Settings View -->
+            <div class="content-view" id="settings">
+                <div class="header">
+                    <h1>System Settings</h1>
+                </div>
+                
+                <div class="content-section">
+                    <div class="section-title">Platform Configuration</div>
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label>Platform Name</label>
+                            <input type="text" value="BuySell Liberia">
+                        </div>
+                        <div class="form-group">
+                            <label>Currency</label>
+                            <select>
+                                <option value="LRD">Liberian Dollar (LRD)</option>
+                                <option value="USD">US Dollar (USD)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Listing Expiration (Days)</label>
+                            <input type="number" value="30">
+                        </div>
+                        <div class="form-group">
+                            <label>Max Photos per Listing</label>
+                            <input type="number" value="5">
+                        </div>
+                        <div class="form-group">
+                            <label>Support Email</label>
+                            <input type="email" value="support@buysell.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Support Phone</label>
+                            <input type="text" value="+231 77 123 4567">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <div class="section-title">System Controls</div>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <div class="stat-label">Monetization</div>
+                                    <div style="font-size: 14px; color: #27ae60;">Currently ON</div>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <div class="stat-label">User Registration</div>
+                                    <div style="font-size: 14px; color: #27ae60;">Currently ON</div>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <div class="stat-label">Maintenance Mode</div>
+                                    <div style="font-size: 14px; color: #e74c3c;">Currently OFF</div>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <div class="section-title">Admin Profile</div>
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label>Admin Name</label>
+                            <input type="text" value="Super Admin">
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" value="admin@buysell.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Change Password</label>
+                            <input type="password" placeholder="New Password">
+                        </div>
+                        <div class="form-group">
+                            <label>Confirm Password</label>
+                            <input type="password" placeholder="Confirm New Password">
+                        </div>
+                    </div>
+                    <button class="btn btn-primary">Save Changes</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Payment Details Modal -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Payment Request Details</h2>
+                <span class="close" onclick="closeModal('paymentModal')">&times;</span>
+            </div>
+            <div class="form-group">
+                <label>User Information</label>
+                <input type="text" value="John Doe - johndoe@email.com" readonly>
+            </div>
+            <div class="form-group">
+                <label>Amount</label>
+                <input type="text" value="L$ 5,000" readonly>
+            </div>
+            <div class="form-group">
+                <label>Payment Method</label>
+                <input type="text" value="MTN Money" readonly>
+            </div>
+            <div class="form-group">
+                <label>Feature Type</label>
+                <input type="text" value="Featured Listing" readonly>
+            </div>
+            <div class="form-group">
+                <label>Listing</label>
+                <input type="text" value="Mercedes Benz G - Premium Car" readonly>
+            </div>
+            <div class="form-group">
+                <label>Transaction Reference</label>
+                <input type="text" value="MTN123456789" readonly>
+            </div>
+            <div class="form-group">
+                <label>Submitted Date</label>
+                <input type="text" value="April 23, 2024 - 10:30 AM" readonly>
+            </div>
+            <div class="form-group">
+                <label>Screenshot/Proof</label>
+                <div style="background: #f8f9fa; padding: 20px; border-radius: 5px; text-align: center;">
+                    <p>📷 Payment Screenshot Available</p>
+                    <button class="btn btn-primary">View Screenshot</button>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Internal Notes</label>
+                <textarea placeholder="Add internal notes about this payment request..."></textarea>
+            </div>
+            <div style="display: flex; gap: 10px; justify-content: flex-end;">
+                <button class="btn btn-success">Approve Payment</button>
+                <button class="btn btn-danger">Reject Payment</button>
+                <button class="btn btn-primary">Save Notes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- User Profile Modal -->
+    <div id="userProfileModal" class="modal">
+        <div class="modal-content" style="max-width: 900px;">
+            <div class="modal-header">
+                <h2>User Profile Details - John Doe</h2>
+                <span class="close" onclick="closeModal('userProfileModal')">&times;</span>
+            </div>
+            
+            <div class="grid-2" style="margin-bottom: 20px;">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" value="John Doe" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" value="john@example.com" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="text" value="+231 77 123 4567" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Registration Date</label>
+                    <input type="text" value="January 15, 2024" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Account Status</label>
+                    <input type="text" value="Active" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Last Login</label>
+                    <input type="text" value="April 23, 2024 - 2:30 PM" readonly>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <div class="section-title">User Listing History</div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Category</th>
+                                <th>Price</th>
+                                <th>Status</th>
+                                <th>Date Created</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>iPhone 13 Pro Max</td>
+                                <td>Mobile Phones</td>
+                                <td>L$ 85,000</td>
+                                <td><span class="status-badge status-active">Active</span></td>
+                                <td>04/20/24</td>
+                                <td>
+                                    <button class="btn btn-primary" style="font-size: 12px; padding: 4px 8px;">View</button>
+                                    <button class="btn btn-warning" style="font-size: 12px; padding: 4px 8px;">Edit</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Samsung Galaxy S21</td>
+                                <td>Mobile Phones</td>
+                                <td>L$ 65,000</td>
+                                <td><span class="status-badge status-sold">Sold</span></td>
+                                <td>03/15/24</td>
+                                <td>
+                                    <button class="btn btn-primary" style="font-size: 12px; padding: 4px 8px;">View</button>
+                                    <button class="btn btn-warning" style="font-size: 12px; padding: 4px 8px;">Edit</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Toyota Corolla 2010</td>
+                                <td>Cars</td>
+                                <td>L$ 950,000</td>
+                                <td><span class="status-badge status-expired">Expired</span></td>
+                                <td>02/10/24</td>
+                                <td>
+                                    <button class="btn btn-primary" style="font-size: 12px; padding: 4px 8px;">View</button>
+                                    <button class="btn btn-warning" style="font-size: 12px; padding: 4px 8px;">Edit</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <div class="section-title">Payment History</div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Payment Method</th>
+                                <th>Amount</th>
+                                <th>Feature Type</th>
+                                <th>Listing</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>MTN Money</td>
+                                <td>L$ 5,000</td>
+                                <td>Featured Listing</td>
+                                <td>iPhone 13 Pro Max</td>
+                                <td>04/23/24</td>
+                                <td><span class="status-badge status-pending">Pending</span></td>
+                                <td>
+                                    <button class="btn btn-primary" style="font-size: 12px; padding: 4px 8px;">View Receipt</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Orange Money</td>
+                                <td>L$ 3,000</td>
+                                <td>Ad Placement</td>
+                                <td>Samsung Galaxy S21</td>
+                                <td>03/18/24</td>
+                                <td><span class="status-badge status-approved">Approved</span></td>
+                                <td>
+                                    <button class="btn btn-primary" style="font-size: 12px; padding: 4px 8px;">View Receipt</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Bank Transfer</td>
+                                <td>L$ 15,000</td>
+                                <td>Business Plan</td>
+                                <td>Business Account</td>
+                                <td>02/28/24</td>
+                                <td><span class="status-badge status-approved">Approved</span></td>
+                                <td>
+                                    <button class="btn btn-primary" style="font-size: 12px; padding: 4px 8px;">View Receipt</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <div class="section-title">User Messages & Reports</div>
+                <div class="grid-2">
+                    <div>
+                        <h4>Recent Messages</h4>
+                        <div style="background: #f8f9fa; padding: 15px; border-radius: 5px; margin-bottom: 10px;">
+                            <p><strong>To:</strong> Jane Smith</p>
+                            <p><strong>Subject:</strong> iPhone 13 Pro Max Inquiry</p>
+                            <p><strong>Date:</strong> 04/23/24</p>
+                            <p>Is this phone still available? I'm interested in purchasing...</p>
+                        </div>
+                        <div style="background: #f8f9fa; padding: 15px; border-radius: 5px;">
+                            <p><strong>From:</strong> Alice Johnson</p>
+                            <p><strong>Subject:</strong> Payment Confirmation</p>
+                            <p><strong>Date:</strong> 04/22/24</p>
+                            <p>I've sent the payment for the car. Please confirm receipt...</p>
+                        </div>
+                    </div>
+                    <div>
+                        <h4>Reports Made by User</h4>
+                        <div style="background: #fff3cd; padding: 15px; border-radius: 5px; margin-bottom: 10px;">
+                            <p><strong>Reported:</strong> Fake iPhone 14 Listing</p>
+                            <p><strong>Reason:</strong> Suspected scam</p>
+                            <p><strong>Date:</strong> 04/21/24</p>
+                            <p><strong>Status:</strong> Under Review</p>
+                        </div>
+                        <div style="background: #d4edda; padding: 15px; border-radius: 5px;">
+                            <p><strong>Reported:</strong> Duplicate Car Ad</p>
+                            <p><strong>Reason:</strong> Duplicate listing</p>
+                            <p><strong>Date:</strong> 04/18/24</p>
+                            <p><strong>Status:</strong> Resolved</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px;">
+                <button class="btn btn-warning">Send Message</button>
+                <button class="btn btn-danger">Ban User</button>
+                <button class="btn btn-success">Reset Password</button>
+                <button class="btn btn-primary">Export User Data</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global role tracking
+        let currentUserRole = '';
+        let currentUserEmail = '';
+        let currentUserName = '';
+
+        // Login functionality
+        function login(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            // Demo login validation
+            if (email === 'admin@buysell.com' && password === 'admin123') {
+                currentUserRole = 'admin';
+                currentUserEmail = 'admin@buysell.com';
+                currentUserName = 'Super Admin';
+                initializeInterface();
+                return false;
+            } else if (email === 'manager@buysell.com' && password === 'manager123') {
+                currentUserRole = 'manager';
+                currentUserEmail = 'manager@buysell.com';
+                currentUserName = 'Manager';
+                initializeInterface();
+                return false;
+            } else if (email === 'moderator@buysell.com' && password === 'mod123') {
+                currentUserRole = 'moderator';
+                currentUserEmail = 'moderator@buysell.com';
+                currentUserName = 'Listings Moderator';
+                initializeInterface();
+                return false;
+            } else if (email === 'payments@buysell.com' && password === 'pay123') {
+                currentUserRole = 'payment_officer';
+                currentUserEmail = 'payments@buysell.com';
+                currentUserName = 'Payment Officer';
+                initializeInterface();
+                return false;
+            } else if (email === 'support@buysell.com' && password === 'sup123') {
+                currentUserRole = 'support_agent';
+                currentUserEmail = 'support@buysell.com';
+                currentUserName = 'Support Agent';
+                initializeInterface();
+                return false;
+            } else if (email === 'analytics@buysell.com' && password === 'ana123') {
+                currentUserRole = 'analytics_assistant';
+                currentUserEmail = 'analytics@buysell.com';
+                currentUserName = 'Analytics Assistant';
+                initializeInterface();
+                return false;
+            } else {
+                alert('Invalid credentials. Please use the demo credentials provided.');
+                return false;
+            }
+        }
+
+        // Initialize interface based on user role
+        function initializeInterface() {
+            document.getElementById('loginPage').style.display = 'none';
+            document.getElementById('adminPanel').classList.add('active');
+            
+            // Update user info display
+            updateUserInfo();
+            
+            // Apply role-based restrictions
+            applyRoleRestrictions();
+        }
+
+        // Update user info display
+        function updateUserInfo() {
+            const userAvatar = document.querySelector('.user-avatar');
+            const userNameElement = document.querySelector('.user-info > div > div:first-child');
+            const userEmailElement = document.querySelector('.user-info > div > div:last-child');
+            const roleIndicator = document.getElementById('roleIndicator');
+            
+            // Update avatar initials
+            const initials = currentUserName.split(' ').map(n => n[0]).join('');
+            userAvatar.textContent = initials;
+            
+            // Update name and email
+            userNameElement.textContent = currentUserName;
+            userEmailElement.textContent = currentUserEmail;
+            
+            // Update role indicator in sidebar
+            if (roleIndicator) {
+                roleIndicator.textContent = `Logged in as: ${currentUserName}`;
+                roleIndicator.style.display = 'block';
+            }
+        }
+
+        // Apply role-based restrictions
+        function applyRoleRestrictions() {
+            const restrictedSections = {
+                'admin': [], // Super Admin has access to everything
+                'manager': ['monetization', 'employees', 'audit', 'settings'], // Manager cannot access these
+                'moderator': ['users', 'messages', 'payments', 'revenue', 'monetization', 'announcements', 'pages', 'employees', 'audit', 'settings'], // Listings Moderator - only listings related
+                'payment_officer': ['users', 'listings', 'reports', 'messages', 'monetization', 'categories', 'announcements', 'pages', 'employees', 'audit', 'settings'], // Payment Officer - only payments and revenue
+                'support_agent': ['listings', 'payments', 'revenue', 'monetization', 'categories', 'announcements', 'pages', 'employees', 'audit', 'settings'], // Support Agent - only users, messages, reports
+                'analytics_assistant': ['users', 'listings', 'reports', 'messages', 'payments', 'monetization', 'categories', 'announcements', 'pages', 'employees', 'settings'] // Analytics Assistant - only dashboard, revenue, audit
+            };
+
+            const currentRestrictions = restrictedSections[currentUserRole] || [];
+            
+            // Hide restricted navigation items
+            currentRestrictions.forEach(section => {
+                const navItem = document.querySelector(`[onclick="showSection('${section}')"]`);
+                if (navItem) {
+                    navItem.parentElement.style.display = 'none';
+                }
+            });
+
+            // Apply special restrictions based on roles
+            if (currentUserRole === 'manager') {
+                applyManagerRestrictions();
+            } else if (currentUserRole === 'moderator') {
+                applyModeratorRestrictions();
+            } else if (currentUserRole === 'payment_officer') {
+                applyPaymentOfficerRestrictions();
+            } else if (currentUserRole === 'support_agent') {
+                applySupportAgentRestrictions();
+            } else if (currentUserRole === 'analytics_assistant') {
+                applyAnalyticsAssistantRestrictions();
+            }
+        }
+
+        // Apply manager-specific restrictions
+        function applyManagerRestrictions() {
+            // Make Revenue Center view-only for managers
+            const revenueSection = document.getElementById('revenue');
+            if (revenueSection) {
+                // Hide any edit/withdrawal buttons in revenue section
+                const editButtons = revenueSection.querySelectorAll('.btn-warning, .btn-danger');
+                editButtons.forEach(btn => {
+                    if (btn.textContent.includes('Edit') || btn.textContent.includes('Withdraw') || btn.textContent.includes('Settings')) {
+                        btn.style.display = 'none';
+                    }
+                });
+
+                // Add view-only notice
+                const revenueHeader = revenueSection.querySelector('.header h1');
+                if (revenueHeader && !revenueHeader.querySelector('.view-only-notice')) {
+                    const notice = document.createElement('span');
+                    notice.className = 'view-only-notice';
+                    notice.textContent = '(View Only)';
+                    revenueHeader.appendChild(notice);
+                }
+            }
+
+            // Show manager-specific features
+            const userExportActions = document.getElementById('userExportActions');
+            if (userExportActions) {
+                userExportActions.style.display = 'flex';
+                userExportActions.style.gap = '10px';
+            }
+        }
+
+        // Apply listings moderator restrictions
+        function applyModeratorRestrictions() {
+            // Add moderator-specific notices
+            const dashboardSection = document.getElementById('dashboard');
+            if (dashboardSection) {
+                const dashboardHeader = dashboardSection.querySelector('.header h1');
+                if (dashboardHeader && !dashboardHeader.querySelector('.role-notice')) {
+                    const notice = document.createElement('span');
+                    notice.className = 'role-notice view-only-notice';
+                    notice.textContent = '(Listings-Related Stats Only)';
+                    dashboardHeader.appendChild(notice);
+                }
+            }
+
+            // Categories view-only for moderators
+            const categoriesSection = document.getElementById('categories');
+            if (categoriesSection) {
+                const categoriesHeader = categoriesSection.querySelector('.header h1');
+                if (categoriesHeader && !categoriesHeader.querySelector('.view-only-notice')) {
+                    const notice = document.createElement('span');
+                    notice.className = 'view-only-notice';
+                    notice.textContent = '(View Only)';
+                    categoriesHeader.appendChild(notice);
+                }
+            }
+        }
+
+        // Apply payment officer restrictions
+        function applyPaymentOfficerRestrictions() {
+            // Add payment officer-specific notices
+            const dashboardSection = document.getElementById('dashboard');
+            if (dashboardSection) {
+                const dashboardHeader = dashboardSection.querySelector('.header h1');
+                if (dashboardHeader && !dashboardHeader.querySelector('.role-notice')) {
+                    const notice = document.createElement('span');
+                    notice.className = 'role-notice view-only-notice';
+                    notice.textContent = '(Payment-Related Stats Only)';
+                    dashboardHeader.appendChild(notice);
+                }
+            }
+
+            // Make Revenue Center view-only for payment officers
+            const revenueSection = document.getElementById('revenue');
+            if (revenueSection) {
+                const revenueHeader = revenueSection.querySelector('.header h1');
+                if (revenueHeader && !revenueHeader.querySelector('.view-only-notice')) {
+                    const notice = document.createElement('span');
+                    notice.className = 'view-only-notice';
+                    notice.textContent = '(View Only)';
+                    revenueHeader.appendChild(notice);
+                }
+            }
+        }
+
+        // Apply support agent restrictions
+        function applySupportAgentRestrictions() {
+            // Add support agent-specific notices
+            const dashboardSection = document.getElementById('dashboard');
+            if (dashboardSection) {
+                const dashboardHeader = dashboardSection.querySelector('.header h1');
+                if (dashboardHeader && !dashboardHeader.querySelector('.role-notice')) {
+                    const notice = document.createElement('span');
+                    notice.className = 'role-notice view-only-notice';
+                    notice.textContent = '(Support Stats Only)';
+                    dashboardHeader.appendChild(notice);
+                }
+            }
+
+            // Make Users section view-only for support agents
+            const usersSection = document.getElementById('users');
+            if (usersSection) {
+                const usersHeader = usersSection.querySelector('.header h1');
+                if (usersHeader && !usersHeader.querySelector('.view-only-notice')) {
+                    const notice = document.createElement('span');
+                    notice.className = 'view-only-notice';
+                    notice.textContent = '(View Only)';
+                    usersHeader.appendChild(notice);
+                }
+            }
+        }
+
+        // Apply analytics assistant restrictions
+        function applyAnalyticsAssistantRestrictions() {
+            // Add analytics assistant-specific notices
+            const dashboardSection = document.getElementById('dashboard');
+            if (dashboardSection) {
+                const dashboardHeader = dashboardSection.querySelector('.header h1');
+                if (dashboardHeader && !dashboardHeader.querySelector('.role-notice')) {
+                    const notice = document.createElement('span');
+                    notice.className = 'role-notice view-only-notice';
+                    notice.textContent = '(Analytics Overview)';
+                    dashboardHeader.appendChild(notice);
+                }
+            }
+
+            // Make Revenue Center view-only for analytics assistants
+            const revenueSection = document.getElementById('revenue');
+            if (revenueSection) {
+                const revenueHeader = revenueSection.querySelector('.header h1');
+                if (revenueHeader && !revenueHeader.querySelector('.view-only-notice')) {
+                    const notice = document.createElement('span');
+                    notice.className = 'view-only-notice';
+                    notice.textContent = '(View Only)';
+                    revenueHeader.appendChild(notice);
+                }
+            }
+
+            // Make Audit Log view-only for analytics assistants
+            const auditSection = document.getElementById('audit');
+            if (auditSection) {
+                const auditHeader = auditSection.querySelector('.header h1');
+                if (auditHeader && !auditHeader.querySelector('.view-only-notice')) {
+                    const notice = document.createElement('span');
+                    notice.className = 'view-only-notice';
+                    notice.textContent = '(View Only)';
+                    auditHeader.appendChild(notice);
+                }
+            }
+        }
+
+        // Export users functionality for managers
+        function exportUsers(format) {
+            if (currentUserRole !== 'manager' && currentUserRole !== 'admin') {
+                alert('Access denied. Export functionality is only available for Managers and Admins.');
+                return;
+            }
+
+            // Simulate export process
+            const users = [
+                { name: 'John Doe', email: 'john@example.com', phone: '+231 77 123 4567', status: 'Active', registrationDate: '01/15/24' },
+                { name: 'Jana Smith', email: 'jana@example.com', phone: '+231 88 987 6543', status: 'Banned', registrationDate: '02/20/24' },
+                { name: 'Alice Johnson', email: 'alice@example.com', phone: '+231 77 555 1234', status: 'Active', registrationDate: '03/10/24' }
+            ];
+
+            if (format === 'csv') {
+                let csvContent = 'Name,Email,Phone,Status,Registration Date\n';
+                users.forEach(user => {
+                    csvContent += `${user.name},${user.email},${user.phone},${user.status},${user.registrationDate}\n`;
+                });
+                
+                const blob = new Blob([csvContent], { type: 'text/csv' });
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `users_export_${new Date().toISOString().split('T')[0]}.csv`;
+                a.click();
+                window.URL.revokeObjectURL(url);
+            } else if (format === 'pdf') {
+                alert('PDF export would be generated here. For demo purposes, this shows the export functionality is available to managers.');
+            }
+        }
+
+        // Logout functionality
+        function logout() {
+            document.getElementById('adminPanel').classList.remove('active');
+            document.getElementById('loginPage').style.display = 'flex';
+            // Reset form
+            document.getElementById('email').value = '';
+            document.getElementById('password').value = '';
+            // Reset role tracking
+            currentUserRole = '';
+            currentUserEmail = '';
+            currentUserName = '';
+            // Reset interface
+            resetInterface();
+        }
+
+        // Reset interface to default state
+        function resetInterface() {
+            // Show all navigation items
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => {
+                item.style.display = 'block';
+            });
+            
+            // Remove view-only notices and role notices
+            const notices = document.querySelectorAll('.view-only-notice, .role-notice');
+            notices.forEach(notice => notice.remove());
+            
+            // Show all buttons
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(btn => {
+                btn.style.display = '';
+            });
+            
+            // Hide role indicator
+            const roleIndicator = document.getElementById('roleIndicator');
+            if (roleIndicator) {
+                roleIndicator.style.display = 'none';
+            }
+            
+            // Hide manager-specific features
+            const userExportActions = document.getElementById('userExportActions');
+            if (userExportActions) {
+                userExportActions.style.display = 'none';
+            }
+        }
+
+        // Navigation functionality
+        function showSection(sectionId) {
+            // Check if current user has access to this section
+            const restrictedSections = {
+                'admin': [],
+                'manager': ['monetization', 'employees', 'audit', 'settings'],
+                'moderator': ['users', 'messages', 'payments', 'revenue', 'monetization', 'announcements', 'pages', 'employees', 'audit', 'settings'],
+                'payment_officer': ['users', 'listings', 'reports', 'messages', 'monetization', 'categories', 'announcements', 'pages', 'employees', 'audit', 'settings'],
+                'support_agent': ['listings', 'payments', 'revenue', 'monetization', 'categories', 'announcements', 'pages', 'employees', 'audit', 'settings'],
+                'analytics_assistant': ['users', 'listings', 'reports', 'messages', 'payments', 'monetization', 'categories', 'announcements', 'pages', 'employees', 'settings']
+            };
+
+            const currentRestrictions = restrictedSections[currentUserRole] || [];
+            
+            if (currentRestrictions.includes(sectionId)) {
+                alert(`Access denied. Your role (${currentUserName}) does not have permission to access this section.`);
+                return;
+            }
+
+            // Hide all content views
+            const views = document.querySelectorAll('.content-view');
+            views.forEach(view => view.classList.remove('active'));
+            
+            // Show selected view
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Update active nav link
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => link.classList.remove('active'));
+            
+            // Find and activate the corresponding nav link
+            const activeLink = document.querySelector(`[onclick="showSection('${sectionId}')"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+
+            // Apply role-specific restrictions after section load
+            applyRoleRestrictions();
+        }
+
+        // Modal functionality
+        function showModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>  

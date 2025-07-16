@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BuySell Liberia - Support Agent Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .role-header {
+            background: linear-gradient(135deg, #27AE60 0%, #2D9CDB 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            border-radius: 10px;
+        }
+        .role-header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .role-header p {
+            margin: 10px 0 0 0;
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        .access-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .access-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-left: 4px solid #27AE60;
+        }
+        .restricted-card {
+            background: #fff5f5;
+            border-left: 4px solid #e74c3c;
+        }
+        .view-only-card {
+            background: #fffdf5;
+            border-left: 4px solid #2D9CDB;
+        }
+        .access-card h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        .restricted-card h3 {
+            color: #e74c3c;
+        }
+        .view-only-card h3 {
+            color: #2D9CDB;
+        }
+        .access-list {
+            list-style: none;
+            padding: 0;
+        }
+        .access-list li {
+            padding: 5px 0;
+            color: #555;
+            position: relative;
+            padding-left: 20px;
+        }
+        .access-list li::before {
+            content: "✅";
+            position: absolute;
+            left: 0;
+        }
+        .restricted-list li::before {
+            content: "❌";
+        }
+        .restricted-list li {
+            color: #e74c3c;
+        }
+        .view-only-list li::before {
+            content: "👁️";
+        }
+        .view-only-list li {
+            color: #2D9CDB;
+        }
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .quick-action {
+            background: #27AE60;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            text-align: center;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        .quick-action:hover {
+            background: #219a52;
+        }
+    </style>
+</head>
+<body>
+    <div class="role-header">
+        <h1>🤝 Support Agent Dashboard</h1>
+        <p>Dedicated User Support & Customer Service Functions</p>
+    </div>
+
+    <div class="container">
+        <div class="access-grid">
+            <div class="access-card">
+                <h3>✅ Full Access Sections</h3>
+                <ul class="access-list">
+                    <li>Dashboard (Support Stats)</li>
+                    <li>Message Monitor</li>
+                    <li>User Inquiries</li>
+                    <li>Reported Listings</li>
+                    <li>Customer Support</li>
+                    <li>Issue Resolution</li>
+                </ul>
+            </div>
+
+            <div class="access-card view-only-card">
+                <h3>👁️ View-Only Access</h3>
+                <ul class="access-list view-only-list">
+                    <li>Users Management</li>
+                    <li>User Profiles</li>
+                    <li>Account Information</li>
+                    <li>User Activity</li>
+                    <li>Registration Data</li>
+                </ul>
+            </div>
+
+            <div class="access-card restricted-card">
+                <h3>❌ Restricted Access</h3>
+                <ul class="access-list restricted-list">
+                    <li>Listings Management</li>
+                    <li>Manual Payment Requests</li>
+                    <li>Revenue Center</li>
+                    <li>Monetization Settings</li>
+                    <li>Categories & Location Manager</li>
+                    <li>Announcements</li>
+                    <li>Static Page Manager</li>
+                    <li>Employee Management</li>
+                    <li>Audit Log</li>
+                    <li>System Settings</li>
+                </ul>
+            </div>
+
+            <div class="access-card">
+                <h3>🔧 Support Tools</h3>
+                <ul class="access-list">
+                    <li>Live Chat System</li>
+                    <li>Ticket Management</li>
+                    <li>User Communication</li>
+                    <li>Issue Tracking</li>
+                    <li>Response Templates</li>
+                    <li>Escalation Procedures</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="quick-actions">
+            <a href="index.html" class="quick-action">🚀 Launch Dashboard</a>
+            <a href="super-admin.html" class="quick-action">👑 Super Admin View</a>
+            <a href="manager.html" class="quick-action">👤 Manager View</a>
+            <a href="moderator.html" class="quick-action">🛡️ Moderator View</a>
+            <a href="payment-officer.html" class="quick-action">💳 Payment Officer View</a>
+            <a href="analytics-assistant.html" class="quick-action">📊 Analytics Assistant View</a>
+        </div>
+
+        <div class="content-section">
+            <div class="section-title">Support Agent Credentials</div>
+            <p style="background: #e8f5e8; padding: 20px; border-radius: 10px; font-size: 1.1em;">
+                <strong>Login:</strong> support@buysell.com<br>
+                <strong>Password:</strong> sup123<br><br>
+                <strong>Access Level:</strong> Customer service focused role with access to user support functions. Can respond to messages, handle user inquiries, and manage reported content but cannot modify listings or payments.
+            </p>
+        </div>
+
+        <div class="content-section">
+            <div class="section-title">Support Channels</div>
+            <div class="access-grid">
+                <div class="access-card">
+                    <h3>💬 Message Monitor</h3>
+                    <p>Monitor user messages and conversations to provide support and resolve issues.</p>
+                </div>
+                <div class="access-card">
+                    <h3>📧 User Inquiries</h3>
+                    <p>Handle user questions about listings, payments, and platform functionality.</p>
+                </div>
+                <div class="access-card">
+                    <h3>🚨 Report Handling</h3>
+                    <p>Process user reports about inappropriate content and platform violations.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <div class="section-title">Key Responsibilities</div>
+            <div class="access-grid">
+                <div class="access-card">
+                    <h3>👥 User Assistance</h3>
+                    <p>Provide helpful support to users navigating the platform and resolving their issues.</p>
+                </div>
+                <div class="access-card">
+                    <h3>📞 Communication</h3>
+                    <p>Respond to user messages, inquiries, and provide timely customer service.</p>
+                </div>
+                <div class="access-card">
+                    <h3>🔍 Issue Resolution</h3>
+                    <p>Investigate user complaints and work to resolve platform-related problems.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
