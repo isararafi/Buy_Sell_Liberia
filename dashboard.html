@@ -2,48 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>BuySell Liberia - Admin Panel</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="dashboard.css">
+  
 </head>
 <body>
-    <!-- Login Page -->
-    <div class="login-container" id="loginPage">
-        <div class="login-box">
-            <div class="login-header">
-                <div class="login-logo">
-                    <img src="logo.jpeg" alt="BuySell Liberia Logo">
-                </div>
-                <div class="login-title">BuySell Liberia</div>
-                <div class="login-subtitle">Admin Panel Access</div>
-            </div>
-            <form class="login-form" onsubmit="return login(event)">
-                <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required>
-                </div>
-                <button type="submit" class="login-btn">Sign In</button>
-            </form>
-            <div class="demo-credentials">
-                <h4>Demo Credentials:</h4>
-                <p><strong>Super Admin:</strong> admin@buysell.com / admin123</p>
-                <p><strong>Manager:</strong> manager@buysell.com / manager123</p>
-                <p><strong>Listings Moderator:</strong> moderator@buysell.com / mod123</p>
-                <p><strong>Payment Officer:</strong> payments@buysell.com / pay123</p>
-                <p><strong>Support Agent:</strong> support@buysell.com / sup123</p>
-                <p><strong>Analytics Assistant:</strong> analytics@buysell.com / ana123</p>
-            </div>
-        </div>
-    </div>
 
     <!-- Main Admin Panel -->
     <div class="container" id="adminPanel">
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" onclick="toggleMobileMenu()" aria-label="Toggle navigation menu">
+        </button>
+        <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
+        
         <!-- Sidebar -->
-        <aside class="sidebar">
+        <aside class="sidebar" id="sidebar">
             <div class="logo">
                 <div class="logo-icon">
                     <img src="logo.jpeg" alt="BuySell Liberia Logo">
@@ -151,7 +126,6 @@
                 <div class="header">
                     <h1>Dashboard</h1>
                     <div class="user-info">
-                        <div class="user-avatar">SA</div>
                         <div>
                             <div style="font-weight: 600;">Super Admin</div>
                             <div style="font-size: 12px; color: #7f8c8d;">admin@buysell.com</div>
@@ -1989,59 +1963,18 @@
         let currentUserEmail = '';
         let currentUserName = '';
 
-        // Login functionality
-        function login(event) {
-            event.preventDefault();
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            
-            // Demo login validation
-            if (email === 'admin@buysell.com' && password === 'admin123') {
-                currentUserRole = 'admin';
-                currentUserEmail = 'admin@buysell.com';
-                currentUserName = 'Super Admin';
-                initializeInterface();
-                return false;
-            } else if (email === 'manager@buysell.com' && password === 'manager123') {
-                currentUserRole = 'manager';
-                currentUserEmail = 'manager@buysell.com';
-                currentUserName = 'Manager';
-                initializeInterface();
-                return false;
-            } else if (email === 'moderator@buysell.com' && password === 'mod123') {
-                currentUserRole = 'moderator';
-                currentUserEmail = 'moderator@buysell.com';
-                currentUserName = 'Listings Moderator';
-                initializeInterface();
-                return false;
-            } else if (email === 'payments@buysell.com' && password === 'pay123') {
-                currentUserRole = 'payment_officer';
-                currentUserEmail = 'payments@buysell.com';
-                currentUserName = 'Payment Officer';
-                initializeInterface();
-                return false;
-            } else if (email === 'support@buysell.com' && password === 'sup123') {
-                currentUserRole = 'support_agent';
-                currentUserEmail = 'support@buysell.com';
-                currentUserName = 'Support Agent';
-                initializeInterface();
-                return false;
-            } else if (email === 'analytics@buysell.com' && password === 'ana123') {
-                currentUserRole = 'analytics_assistant';
-                currentUserEmail = 'analytics@buysell.com';
-                currentUserName = 'Analytics Assistant';
-                initializeInterface();
-                return false;
-            } else {
-                alert('Invalid credentials. Please use the demo credentials provided.');
-                return false;
-            }
-        }
-
-        // Initialize interface based on user role
+        // Check authentication and initialize interface
         function initializeInterface() {
-            document.getElementById('loginPage').style.display = 'none';
-            document.getElementById('adminPanel').classList.add('active');
+            // Get user data from sessionStorage
+            currentUserEmail = sessionStorage.getItem('userEmail');
+            currentUserRole = sessionStorage.getItem('userRole');
+            currentUserName = sessionStorage.getItem('userName');
+            
+            // If no user data, redirect to login
+            if (!currentUserEmail || !currentUserRole || !currentUserName) {
+                window.location.href = 'login.html';
+                return;
+            }
             
             // Update user info display
             updateUserInfo();
@@ -2292,17 +2225,18 @@
 
         // Logout functionality
         function logout() {
-            document.getElementById('adminPanel').classList.remove('active');
-            document.getElementById('loginPage').style.display = 'flex';
-            // Reset form
-            document.getElementById('email').value = '';
-            document.getElementById('password').value = '';
+            // Clear session data
+            sessionStorage.removeItem('userEmail');
+            sessionStorage.removeItem('userRole');
+            sessionStorage.removeItem('userName');
+            
             // Reset role tracking
             currentUserRole = '';
             currentUserEmail = '';
             currentUserName = '';
-            // Reset interface
-            resetInterface();
+            
+            // Redirect to login page
+            window.location.href = 'login.html';
         }
 
         // Reset interface to default state
@@ -2337,7 +2271,83 @@
         }
 
         // Navigation functionality
+
+        // Modal functionality
+        function showModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        }
+
+        // Mobile menu functionality
+        function toggleMobileMenu() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('mobileOverlay');
+            const toggle = document.getElementById('mobileMenuToggle');
+            
+            sidebar.classList.toggle('mobile-open');
+            overlay.classList.toggle('active');
+            toggle.classList.toggle('active');
+            
+            // Update aria-expanded for accessibility
+            const isOpen = sidebar.classList.contains('mobile-open');
+            toggle.setAttribute('aria-expanded', isOpen);
+        }
+
+        function closeMobileMenu() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('mobileOverlay');
+            const toggle = document.getElementById('mobileMenuToggle');
+            
+            sidebar.classList.remove('mobile-open');
+            overlay.classList.remove('active');
+            toggle.classList.remove('active');
+            toggle.setAttribute('aria-expanded', 'false');
+        }
+
+        // Close mobile menu when clicking on nav links
+        function closeMobileMenuOnNavClick() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', closeMobileMenu);
+            });
+        }
+
+        // Close mobile menu on escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeMobileMenu();
+            }
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('sidebar');
+            const toggle = document.getElementById('mobileMenuToggle');
+            const overlay = document.getElementById('mobileOverlay');
+            
+            if (!sidebar.contains(event.target) && !toggle.contains(event.target) && overlay.classList.contains('active')) {
+                closeMobileMenu();
+            }
+        });
+
+        // Navigation function with mobile menu handling
         function showSection(sectionId) {
+            // Close mobile menu first
+            closeMobileMenu();
+            
             // Check if current user has access to this section
             const restrictedSections = {
                 'admin': [],
@@ -2376,24 +2386,35 @@
             applyRoleRestrictions();
         }
 
-        // Modal functionality
-        function showModal(modalId) {
-            document.getElementById(modalId).style.display = 'block';
-        }
-
-        function closeModal(modalId) {
-            document.getElementById(modalId).style.display = 'none';
-        }
-
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            const modals = document.querySelectorAll('.modal');
-            modals.forEach(modal => {
-                if (event.target === modal) {
-                    modal.style.display = 'none';
+        // Initialize mobile menu functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize the interface (check auth and setup)
+            initializeInterface();
+            
+            // Set initial mobile menu state
+            const toggle = document.getElementById('mobileMenuToggle');
+            if (toggle) {
+                toggle.setAttribute('aria-expanded', 'false');
+            }
+            
+            // Set up mobile menu event listeners
+            closeMobileMenuOnNavClick();
+            
+            // Show mobile menu toggle on mobile devices
+            function checkMobileMenuVisibility() {
+                const toggle = document.getElementById('mobileMenuToggle');
+                if (window.innerWidth <= 767) {
+                    toggle.style.display = 'block';
+                } else {
+                    toggle.style.display = 'none';
+                    closeMobileMenu(); // Close menu when switching to desktop
                 }
-            });
-        }
+            }
+            
+            // Check on load and resize
+            checkMobileMenuVisibility();
+            window.addEventListener('resize', checkMobileMenuVisibility);
+        });
     </script>
 </body>
 </html>  

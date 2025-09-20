@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>BuySell Liberia - Login</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="login.css">
+   
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <div class="login-header">
+                <div class="login-logo">
+                    <img src="logo.jpeg" alt="BuySell Liberia Logo">
+                </div>
+                <div class="login-title">BuySell Liberia</div>
+                <div class="login-subtitle">Admin Panel Access</div>
+            </div>
+            
+            <div class="error-message" id="errorMessage"></div>
+            
+            <form class="login-form" onsubmit="return handleLogin(event)">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="login-btn" id="loginBtn">Sign In</button>
+            </form>
+            
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>Signing you in...</p>
+            </div>
+            
+            <div class="demo-credentials">
+                <h4>Demo Credentials:</h4>
+                <p><strong>Super Admin:</strong> admin@buysell.com / admin123</p>
+                <p><strong>Manager:</strong> manager@buysell.com / manager123</p>
+                <p><strong>Listings Moderator:</strong> moderator@buysell.com / mod123</p>
+                <p><strong>Payment Officer:</strong> payments@buysell.com / pay123</p>
+                <p><strong>Support Agent:</strong> support@buysell.com / sup123</p>
+                <p><strong>Analytics Assistant:</strong> analytics@buysell.com / ana123</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function handleLogin(event) {
+            event.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const loginBtn = document.getElementById('loginBtn');
+            const loading = document.getElementById('loading');
+            const errorMessage = document.getElementById('errorMessage');
+            
+            // Show loading state
+            loginBtn.disabled = true;
+            loginBtn.textContent = 'Signing In...';
+            loading.style.display = 'block';
+            errorMessage.style.display = 'none';
+            
+            // Simulate login delay
+            setTimeout(() => {
+                // Demo login validation
+                const validCredentials = {
+                    'admin@buysell.com': { password: 'admin123', role: 'admin', name: 'Super Admin' },
+                    'manager@buysell.com': { password: 'manager123', role: 'manager', name: 'Manager' },
+                    'moderator@buysell.com': { password: 'mod123', role: 'moderator', name: 'Listings Moderator' },
+                    'payments@buysell.com': { password: 'pay123', role: 'payment_officer', name: 'Payment Officer' },
+                    'support@buysell.com': { password: 'sup123', role: 'support_agent', name: 'Support Agent' },
+                    'analytics@buysell.com': { password: 'ana123', role: 'analytics_assistant', name: 'Analytics Assistant' }
+                };
+                
+                if (validCredentials[email] && validCredentials[email].password === password) {
+                    // Store user data in sessionStorage
+                    sessionStorage.setItem('userEmail', email);
+                    sessionStorage.setItem('userRole', validCredentials[email].role);
+                    sessionStorage.setItem('userName', validCredentials[email].name);
+                    
+                    // Redirect to dashboard
+                    window.location.href = 'dashboard.html';
+                } else {
+                    // Show error
+                    errorMessage.textContent = 'Invalid credentials. Please use the demo credentials provided.';
+                    errorMessage.style.display = 'block';
+                    
+                    // Reset button state
+                    loginBtn.disabled = false;
+                    loginBtn.textContent = 'Sign In';
+                    loading.style.display = 'none';
+                }
+            }, 1000);
+            
+            return false;
+        }
+
+        // Check if user is already logged in
+        document.addEventListener('DOMContentLoaded', function() {
+            if (sessionStorage.getItem('userEmail')) {
+                window.location.href = 'dashboard.html';
+            }
+        });
+    </script>
+</body>
+</html>

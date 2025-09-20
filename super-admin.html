@@ -6,6 +6,100 @@
     <title>BuySell Liberia - Super Admin Dashboard</title>
     <link rel="stylesheet" href="styles.css">
     <style>
+        /* Mobile Responsive Styles for Super Admin Page */
+        @media (max-width: 768px) {
+            .role-header {
+                padding: 15px;
+                margin-bottom: 20px;
+            }
+            
+            .role-header h1 {
+                font-size: 2em;
+            }
+            
+            .role-header p {
+                font-size: 1em;
+            }
+            
+            .access-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                margin-bottom: 20px;
+            }
+            
+            .access-card {
+                padding: 15px;
+            }
+            
+            .access-card h3 {
+                font-size: 1.2em;
+                margin-bottom: 10px;
+            }
+            
+            .access-list {
+                font-size: 14px;
+            }
+            
+            .quick-actions {
+                flex-direction: column;
+                gap: 10px;
+                margin-bottom: 20px;
+            }
+            
+            .quick-action {
+                padding: 12px 15px;
+                font-size: 14px;
+                text-align: center;
+            }
+            
+            .content-section {
+                padding: 15px;
+            }
+            
+            .section-title {
+                font-size: 1.3em;
+                margin-bottom: 15px;
+            }
+            
+            .content-section p {
+                padding: 15px;
+                font-size: 1em;
+                line-height: 1.5;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .role-header {
+                padding: 10px;
+            }
+            
+            .role-header h1 {
+                font-size: 1.8em;
+            }
+            
+            .access-card {
+                padding: 12px;
+            }
+            
+            .access-card h3 {
+                font-size: 1.1em;
+            }
+            
+            .quick-action {
+                padding: 10px 12px;
+                font-size: 13px;
+            }
+            
+            .content-section {
+                padding: 12px;
+            }
+            
+            .content-section p {
+                padding: 12px;
+                font-size: 0.9em;
+            }
+        }
+        
         .role-header {
             background: linear-gradient(135deg, #2c3e50 0%, #2D9CDB 100%);
             color: white;

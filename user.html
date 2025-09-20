@@ -2,1092 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>BuySell Liberia - Buy & Sell Platform</title>
     <link rel="stylesheet" href="styles.css">
-   <style>
-    body {
-    background: #f8f9fa;
-    font-family: Arial, sans-serif;
-}
-
-.user-header {
-    background: #27AE60;
-    color: #ffffff;
-    padding: 20px 0;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
-}
-
-.user-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.user-logo {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.user-logo img {
-    width: 50px;
-    height: 25px;
-    object-fit: contain;
-}
-
-.user-logo h1 {
-    margin: 0;
-    font-size: 1.8em;
-    color: #ffffff;
-}
-
-.user-nav-links {
-    display: flex;
-    gap: 30px;
-    align-items: center;
-}
-
-.user-nav-links a {
-    color: #ffffff;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s;
-}
-
-.user-nav-links a:hover {
-    color: #F2C94C;
-}
-
-.user-auth-buttons {
-    display: flex;
-    gap: 10px;
-}
-
-.auth-btn {
-    padding: 8px 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: 500;
-    transition: all 0.3s;
-}
-
-.login-btn {
-    background: transparent;
-    color: #F2C94C;
-    border: 2px solid #F2C94C;
-}
-
-.login-btn:hover {
-    background: #F2C94C;
-    color: #2D9CDB;
-}
-
-.register-btn {
-    background: #F2C94C;
-    color: #2D9CDB;
-}
-
-.register-btn:hover {
-    background: #E6B800;
-    color: #2D9CDB;
-}
-
-.hero-section {
-    background: linear-gradient(135deg, #2D9CDB 20%, #27AE60 80%);
-    color: #ffffff;
-    padding: 80px 0;
-    text-align: center;
-}
-
-.hero-content {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.hero-content h2 {
-    font-size: 3em;
-    margin-bottom: 20px;
-    color: #ffffff;
-}
-
-.hero-content p {
-    font-size: 1.3em;
-    margin-bottom: 30px;
-    color: #ffffff;
-    opacity: 0.95;
-}
-
-.cta-buttons {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.cta-btn {
-    padding: 15px 30px;
-    border: none;
-    border-radius: 8px;
-    font-size: 1.1em;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.cta-primary {
-    background: #27AE60;
-    color: #ffffff;
-}
-
-.cta-primary:hover {
-    background: #219a52;
-}
-
-.cta-secondary {
-    background: transparent;
-    color: #F2C94C;
-    border: 2px solid #F2C94C;
-}
-
-.cta-secondary:hover {
-    background: #F2C94C;
-    color: #2D9CDB;
-}
-
-.features-section {
-    padding: 80px 0;
-    background: #ffffff;
-}
-
-.features-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-top: 50px;
-}
-
-.feature-card {
-    background: #f8f9fa;
-    padding: 30px;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.feature-icon {
-    font-size: 3em;
-    margin-bottom: 20px;
-    color: #2D9CDB;
-}
-
-.feature-card h3 {
-    color: #27AE60;
-    margin-bottom: 15px;
-}
-
-.listings-section {
-    padding: 80px 0;
-    background: #f8f9fa;
-}
-
-.listings-header {
-    text-align: center;
-    margin-bottom: 50px;
-}
-
-.listings-header h2 {
-    color: #2D9CDB;
-    font-size: 2.5em;
-    margin-bottom: 20px;
-}
-
-.listings-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-}
-
-.listing-card {
-    background: #ffffff;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
-}
-
-.listing-card:hover {
-    transform: translateY(-5px);
-}
-
-.listing-image {
-    height: 200px;
-    background: #e9ecef;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 4em;
-    color: #6c757d;
-}
-
-.listing-content {
-    padding: 20px;
-}
-
-.listing-title {
-    font-size: 1.2em;
-    font-weight: 600;
-    color: #2D9CDB;
-    margin-bottom: 10px;
-}
-
-.listing-price {
-    color: #27AE60;
-    font-size: 1.3em;
-    font-weight: 600;
-    margin-bottom: 10px;
-}
-
-.listing-details {
-    color: #6c757d;
-    font-size: 0.9em;
-    margin-bottom: 15px;
-}
-
-.listing-actions {
-    display: flex;
-    gap: 10px;
-}
-
-.listing-btn {
-    flex: 1;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: 500;
-    transition: all 0.3s;
-}
-
-.contact-btn {
-    background: #27AE60;
-    color: #ffffff;
-}
-
-.contact-btn:hover {
-    background: #219a52;
-}
-
-.report-btn {
-    background: #F2C94C;
-    color: #2D9CDB;
-}
-
-.report-btn:hover {
-    background: #E6B800;
-}
-
-.payment-section {
-    padding: 80px 0;
-    background: #ffffff;
-}
-
-.payment-methods {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    margin-top: 50px;
-}
-
-.payment-method {
-    background: #f8f9fa;
-    padding: 30px;
-    border-radius: 10px;
-    text-align: center;
-    border: 2px solid #e9ecef;
-}
-
-.payment-method.active {
-    border-color: #27AE60;
-    background: #e8f5e8;
-}
-
-.payment
-
-.payment-icon {
-    font-size: 3em;
-    margin-bottom: 20px;
-    color: #2D9CDB;
-}
-
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 2000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-.modal-content {
-    background-color: #ffffff;
-    margin: 5% auto;
-    padding: 30px;
-    border-radius: 10px;
-    width: 90%;
-    max-width: 500px;
-    position: relative;
-}
-
-.close {
-    position: absolute;
-    right: 20px;
-    top: 20px;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-    color: #2D9CDB;
-}
-
-.close:hover {
-    color: #27AE60;
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: 500;
-    color: #2D9CDB;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-.form-group textarea {
-    height: 100px;
-    resize: vertical;
-}
-
-.file-upload {
-    border: 2px dashed #2D9CDB;
-    padding: 20px;
-    text-align: center;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.file-upload:hover {
-    border-color: #27AE60;
-    background: #e8f5e8;
-}
-
-.user-dashboard {
-    display: none;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 30px 20px;
-}
-
-.dashboard-header {
-    background: #ffffff;
-    padding: 30px;
-    border-radius: 10px;
-    margin-bottom: 30px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.dashboard-tabs {
-    display: flex;
-    gap: 20px;
-    margin-bottom: 30px;
-    border-bottom: 2px solid #e9ecef;
-}
-
-.dashboard-tab {
-    padding: 15px 25px;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    font-weight: 500;
-    color: #6c757d;
-    border-bottom: 2px solid transparent;
-    transition: all 0.3s;
-}
-
-.dashboard-tab.active {
-    color: #27AE60;
-    border-bottom-color: #27AE60;
-}
-
-.dashboard-content {
-    background: #ffffff;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.public-view {
-    display: block;
-}
-
-.logged-in-view {
-    display: none;
-}
-
-.login-required-notice {
-    background: #FFF9E6;
-    color: #2D9CDB;
-    padding: 15px;
-    border-radius: 5px;
-    margin: 20px 0;
-    border: 1px solid #F2C94C;
-}
-
-.stats-section {
-    padding: 60px 0;
-    background: linear-gradient(135deg, #2D9CDB 20%, #F2C94C 80%);
-    color: #ffffff;
-}
-
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.stat-item {
-    text-align: center;
-}
-
-.stat-number {
-    font-size: 3em;
-    font-weight: bold;
-    color: #ffffff;
-    margin-bottom: 10px;
-}
-
-.stat-label {
-    font-size: 1.1em;
-    opacity: 0.95;
-    color: #ffffff;
-}
-
-.ai-chatbot {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 3000;
-    font-family: Arial, sans-serif;
-}
-
-.chatbot-toggle {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: #2D9CDB;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    color: #ffffff;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease;
-}
-
-.chatbot-toggle:hover {
-    background: #27AE60;
-    transform: scale(1.1);
-    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
-}
-
-.chatbot-toggle::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 10px;
-    height: 10px;
-    background: #F2C94C;
-    border-radius: 50%;
-    transform: translate(-50%, -50%) translate(15px, -15px);
-    animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-    0% { transform: translate(-50%, -50%) translate(15px, -15px) scale(1); opacity: 1; }
-    50% { transform: translate(-50%, -50%) translate(15px, -15px) scale(1.2); opacity: 0.7; }
-    100% { transform: translate(-50%, -50%) translate(15px, -15px) scale(1); opacity: 1; }
-}
-
-.chatbot-window {
-    position: absolute;
-    bottom: 80px;
-    right: 0;
-    width: 350px;
-    height: 450px;
-    background: #ffffff;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    display: none;
-    flex-direction: column;
-    overflow: hidden;
-}
-
-.chatbot-header {
-    background: linear-gradient(135deg, #27AE60 0%, #2D9CDB 100%);
-    color: #ffffff;
-    padding: 15px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.chatbot-header h3 {
-    margin: 0;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: #ffffff;
-}
-
-.chatbot-status {
-    width: 8px;
-    height: 8px;
-    background: #F2C94C;
-    border-radius: 50%;
-    animation: pulse 2s infinite;
-}
-
-.chatbot-close {
-    background: none;
-    border: none;
-    color: #F2C94C;
-    font-size: 20px;
-    cursor: pointer;
-    padding: 0;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.3s;
-}
-
-.chatbot-close:hover {
-    background: rgba(242, 201, 76, 0.2);
-}
-
-.chatbot-messages {
-    flex: 1;
-    padding: 20px;
-    overflow-y: auto;
-    background: #f8f9fa;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.message {
-    max-width: 80%;
-    padding: 12px 16px;
-    border-radius: 18px;
-    word-wrap: break-word;
-    position: relative;
-    animation: fadeIn 0.3s ease;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.message.ai {
-    background: #e8f5e8;
-    color: #2D9CDB;
-    align-self: flex-start;
-    border-bottom-left-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.message.user {
-    background: linear-gradient(135deg, #27AE60 0%, #2D9CDB 100%);
-    color: #ffffff;
-    align-self: flex-end;
-    border-bottom-right-radius: 5px;
-}
-
-.message-time {
-    font-size: 10px;
-    opacity: 0.7;
-    margin-top: 5px;
-    color: #6c757d;
-}
-
-.typing-indicator {
-    display: none;
-    align-self: flex-start;
-    background: #e8f5e8;
-    padding: 12px 16px;
-    border-radius: 18px;
-    border-bottom-left-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.typing-dots {
-    display: flex;
-    gap: 4px;
-}
-
-.typing-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #2D9CDB;
-    animation: typing 1.4s infinite;
-}
-
-.typing-dot:nth-child(1) { animation-delay: 0ms; }
-.typing-dot:nth-child(2) { animation-delay: 200ms; }
-.typing-dot:nth-child(3) { animation-delay: 400ms; }
-
-@keyframes typing {
-    0%, 60%, 100% { transform: translateY(0); }
-    30% { transform: translateY(-10px); }
-}
-
-.chatbot-input {
-    padding: 15px 20px;
-    border-top: 1px solid #eee;
-    background: #ffffff;
-    display: flex;
-    gap: 10px;
-    align-items: center;
-}
-
-.chatbot-input input {
-    flex: 1;
-    padding: 12px 16px;
-    border: 1px solid #2D9CDB;
-    border-radius: 25px;
-    outline: none;
-    font-size: 14px;
-    transition: border-color 0.3s;
-}
-
-.chatbot-input input:focus {
-    border-color: #27AE60;
-}
-
-.chatbot-send {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: #2D9CDB;
-    border: none;
-    color: #ffffff;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    transition: transform 0.3s, background 0.3s;
-}
-
-.chatbot-send:hover {
-    background: #27AE60;
-    transform: scale(1.1);
-}
-
-.chatbot-send:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-    transform: none;
-}
-
-.quick-actions {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 15px;
-    flex-wrap: wrap;
-}
-
-.quick-action {
-    background: #e8f5e8;
-    color: #27AE60;
-    border: 1px solid #27AE60;
-    padding: 8px 12px;
-    border-radius: 15px;
-    font-size: 12px;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.quick-action:hover {
-    background: #27AE60;
-    color: #ffffff;
-}
-
-@media (max-width: 768px) {
-    .chatbot-window {
-        width: 300px;
-        height: 400px;
-    }
-
-    .ai-chatbot {
-        bottom: 15px;
-        right: 15px;
-    }
-}
-
-.btn-primary {
-    background: #27AE60;
-    color: #ffffff;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 6px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.btn-primary:hover {
-    background: #219a52;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
-}
-
-.btn-secondary {
-    background: #F2C94C;
-    color: #2D9CDB;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 6px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.btn-secondary:hover {
-    background: #E6B800;
-    color: #2D9CDB;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(242, 201, 76, 0.3);
-}
-
-.btn-success {
-    background: #27AE60;
-    color: #ffffff;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 4px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.btn-success:hover {
-    background: #219a52;
-    transform: translateY(-1px);
-}
-
-.btn-warning {
-    background: #F2C94C;
-    color: #2D9CDB;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 4px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.btn-warning:hover {
-    background: #E6B800;
-    transform: translateY(-1px);
-}
-
-.btn-danger {
-    background: #2D9CDB;
-    color: #ffffff;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 4px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.btn-danger:hover {
-    background: #1976d2;
-    transform: translateY(-1px);
-}
-
-.text-primary {
-    color: #27AE60 !important;
-}
-
-.text-secondary {
-    color: #F2C94C !important;
-}
-
-.text-info {
-    color: #2D9CDB !important;
-}
-
-.bg-primary {
-    background: #27AE60;
-}
-
-.bg-secondary {
-    background: #F2C94C;
-}
-
-.bg-info {
-    background: #2D9CDB;
-}
-
-.border-primary {
-    border-color: #27AE60 !important;
-}
-
-.border-secondary {
-    border-color: #F2C94C !important;
-}
-
-.border-info {
-    border-color: #2D9CDB !important;
-}
-
-.status-badge {
-    padding: 4px 8px;
-    border-radius: 12px;
-    font-size: 12px;
-    font-weight: 500;
-    text-transform: uppercase;
-}
-
-.status-active {
-    background: #e8f5e8;
-    color: #27AE60;
-}
-
-.status-pending {
-    background: #FFF9E6;
-    color: #2D9CDB;
-}
-
-.status-approved {
-    background: #e8f5e8;
-    color: #27AE60;
-}
-
-.status-sold {
-    background: #E6F3FF;
-    color: #2D9CDB;
-}
-
-.status-expired {
-    background: #FFF9E6;
-    color: #2D9CDB;
-}
-
-.status-rejected {
-    background: #E6F3FF;
-    color: #2D9CDB;
-}
-
-.status-banned {
-    background: #E6F3FF;
-    color: #2D9CDB;
-}
-
-.card {
-    background: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin-bottom: 20px;
-    transition: all 0.3s ease;
-}
-
-.card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-}
-
-.card-header {
-    background: linear-gradient(135deg, #27AE60 0%, #2D9CDB 100%);
-    color: #ffffff;
-    padding: 15px 20px;
-    border-radius: 10px 10px 0 0;
-    margin: -20px -20px 20px -20px;
-}
-
-a {
-    color: #27AE60;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-a:hover {
-    color: #2D9CDB;
-}
-
-input:focus,
-textarea:focus,
-select:focus {
-    outline: none;
-    border-color: #27AE60;
-    box-shadow: 0 0 0 3px rgba(39, 174, 96, 0.2);
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-th {
-    background: #f8f9fa;
-    color: #2D9CDB;
-    font-weight: 600;
-    padding: 12px;
-    text-align: left;
-    border-bottom: 2px solid #e9ecef;
-}
-
-td {
-    padding: 12px;
-    border-bottom: 1px solid #e9ecef;
-}
-
-tr:hover {
-    background: #e8f5e8;
-}
-
-.gradient-primary {
-    background: linear-gradient(135deg, #27AE60 0%, #2D9CDB 100%);
-}
-
-.gradient-secondary {
-    background: linear-gradient(135deg, #F2C94C 0%, #27AE60 100%);
-}
-
-.gradient-tertiary {
-    background: linear-gradient(135deg, #2D9CDB 0%, #F2C94C 100%);
-}
-
-.stat-card {
-    text-align: center;
-    background: #ffffff;
-    border-radius: 10px;
-    padding: 25px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-}
-
-.stat-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-}
-
-.stat-value {
-    font-size: 2.5em;
-    font-weight: bold;
-    color: #27AE60;
-}
-
-.stat-label {
-    font-size: 1em;
-    color: #6c757d;
-    font-weight: 500;
-}
-
-.table-container {
-    background: #ffffff;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
-}
-
-.grid-2 {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    margin-bottom: 20px;
-}
-
-.grid-3 {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    margin-bottom: 20px;
-}
-
-.modal-content {
-    background: #ffffff;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-}
-
-.modal-content h2 {
-    color: #2D9CDB;
-    margin-bottom: 20px;
-}
-
-.form-group input,
-.form-group textarea,
-.form-group select {
-    border: 2px solid #e9ecef;
-    border-radius: 8px;
-    padding: 12px 16px;
-    font-size: 16px;
-    transition: all 0.3s ease;
-}
-
-.form-group input:focus,
-.form-group textarea:focus,
-.form-group select:focus {
-    border-color: #27AE60;
-    box-shadow: 0 0 0 3px rgba(39, 174, 96, 0.2);
-}
-   </style>
+    <link rel="stylesheet" href="user.css">
 </head>
 <body>
     <!-- User Header -->
@@ -1097,12 +15,15 @@ tr:hover {
                 <img src="logo.jpeg" alt="BuySell Liberia Logo">
                 <h1>BuySell Liberia</h1>
             </div>
-            <div class="user-nav-links">
-                <a href="#home">Home</a>
-                <a href="#listings">Listings</a>
-                <a href="#categories">Categories</a>
-                <a href="#about">About</a>
-                <a href="#contact">Contact</a>
+            <button class="menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle navigation menu">
+                ☰
+            </button>
+            <div class="user-nav-links" id="mobileMenu">
+                <a href="#home" onclick="closeMobileMenu()">Home</a>
+                <a href="#listings" onclick="closeMobileMenu()">Listings</a>
+                <a href="#categories" onclick="closeMobileMenu()">Categories</a>
+                <a href="#about" onclick="closeMobileMenu()">About</a>
+                <a href="#contact" onclick="closeMobileMenu()">Contact</a>
             </div>
             <div class="user-auth-buttons" id="authButtons">
                 <button class="auth-btn login-btn" onclick="showModal('loginModal')">Login</button>
@@ -1155,8 +76,8 @@ tr:hover {
         <div class="features-section">
             <div class="features-container">
                 <div style="text-align: center;">
-                    <h2 style="font-size: 2.5em; color: #1976D2; margin-bottom: 20px;">Platform Features</h2>
-                    <p style="font-size: 1.2em; color: #6c757d; max-width: 600px; margin: 0 auto;">Everything you need to buy and sell safely and conveniently in Liberia</p>
+                    <h2>Platform Features</h2>
+                    <p>Everything you need to buy and sell safely and conveniently in Liberia</p>
                 </div>
                 <div class="features-grid">
                     <div class="feature-card">
@@ -1198,7 +119,7 @@ tr:hover {
             <div class="features-container">
                 <div class="listings-header">
                     <h2>Featured Listings</h2>
-                    <p style="font-size: 1.1em; color: #6c757d;">Browse the latest items for sale across Liberia</p>
+                    <p>Browse the latest items for sale across Liberia</p>
                 </div>
                 <div class="listings-grid">
                     <div class="listing-card">
@@ -1245,8 +166,8 @@ tr:hover {
         <div class="payment-section">
             <div class="features-container">
                 <div style="text-align: center;">
-                    <h2 style="font-size: 2.5em; color: #1976D2; margin-bottom: 20px;">Payment Methods</h2>
-                    <p style="font-size: 1.2em; color: #6c757d; max-width: 600px; margin: 0 auto;">Choose from multiple secure payment options</p>
+                    <h2>Payment Methods</h2>
+                    <p>Choose from multiple secure payment options</p>
                 </div>
                 <div class="payment-methods">
                     <div class="payment-method active">
@@ -1308,7 +229,7 @@ tr:hover {
                 </div>
 
                 <div id="listingsTab" class="tab-content" style="display: none;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 1rem;">
                         <h3>My Listings</h3>
                         <button class="btn btn-primary" onclick="switchTab('create')">Create New Listing</button>
                     </div>
@@ -1332,7 +253,7 @@ tr:hover {
                                     <td><span class="status-badge status-active">Active</span></td>
                                     <td>04/20/24</td>
                                     <td>
-                                        <button class="btn btn-warning" style="font-size: 12px; padding: 4px 8px;">Edit</button>
+                                        <button class="btn btn-warning" style="font-size: 12px; padding: 4px 8px; margin-right: 4px;">Edit</button>
                                         <button class="btn btn-success" style="font-size: 12px; padding: 4px 8px;">Mark Sold</button>
                                     </td>
                                 </tr>
@@ -1457,7 +378,7 @@ tr:hover {
 
     <!-- AI Chatbot -->
     <div class="ai-chatbot">
-        <button class="chatbot-toggle" onclick="toggleChatbot()">
+        <button class="chatbot-toggle" onclick="toggleChatbot()" aria-label="Open AI Assistant">
             🤖
         </button>
         
@@ -1467,7 +388,7 @@ tr:hover {
                     <span class="chatbot-status"></span>
                     BuySell AI Assistant
                 </h3>
-                <button class="chatbot-close" onclick="closeChatbot()">×</button>
+                <button class="chatbot-close" onclick="closeChatbot()" aria-label="Close chat">×</button>
             </div>
             
             <div class="chatbot-messages" id="chatbotMessages">
@@ -1492,24 +413,24 @@ tr:hover {
             </div>
             
             <div class="chatbot-input">
-                <input type="text" id="chatInput" placeholder="Type your message..." onkeypress="handleChatKeyPress(event)">
-                <button class="chatbot-send" onclick="sendMessage()" id="sendButton">➤</button>
+                <input type="text" id="chatInput" placeholder="Type your message..." onkeypress="handleChatKeyPress(event)" aria-label="Chat message input">
+                <button class="chatbot-send" onclick="sendMessage()" id="sendButton" aria-label="Send message">➤</button>
             </div>
         </div>
     </div>
 
     <!-- Login Modal -->
-    <div id="loginModal" class="modal">
+    <div id="loginModal" class="modal" role="dialog" aria-labelledby="loginTitle" aria-hidden="true">
         <div class="modal-content">
-            <span class="close" onclick="closeModal('loginModal')">&times;</span>
-            <h2>Login to Your Account</h2>
+            <span class="close" onclick="closeModal('loginModal')" aria-label="Close login modal">&times;</span>
+            <h2 id="loginTitle">Login to Your Account</h2>
             <form onsubmit="return userLogin(event)">
                 <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" id="loginEmail" required>
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" required aria-describedby="emailHelp">
                 </div>
                 <div class="form-group">
-                    <label>Password</label>
+                    <label for="loginPassword">Password</label>
                     <input type="password" id="loginPassword" required>
                 </div>
                 <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
@@ -1521,25 +442,25 @@ tr:hover {
     </div>
 
     <!-- Register Modal -->
-    <div id="registerModal" class="modal">
+    <div id="registerModal" class="modal" role="dialog" aria-labelledby="registerTitle" aria-hidden="true">
         <div class="modal-content">
-            <span class="close" onclick="closeModal('registerModal')">&times;</span>
-            <h2>Create Your Account</h2>
+            <span class="close" onclick="closeModal('registerModal')" aria-label="Close register modal">&times;</span>
+            <h2 id="registerTitle">Create Your Account</h2>
             <form onsubmit="return userRegister(event)">
                 <div class="form-group">
-                    <label>Full Name</label>
+                    <label for="registerName">Full Name</label>
                     <input type="text" id="registerName" required>
                 </div>
                 <div class="form-group">
-                    <label>Email</label>
+                    <label for="registerEmail">Email</label>
                     <input type="email" id="registerEmail" required>
                 </div>
                 <div class="form-group">
-                    <label>Phone Number</label>
+                    <label for="registerPhone">Phone Number</label>
                     <input type="tel" id="registerPhone" required>
                 </div>
                 <div class="form-group">
-                    <label>Password</label>
+                    <label for="registerPassword">Password</label>
                     <input type="password" id="registerPassword" required>
                 </div>
                 <button type="submit" class="btn btn-primary" style="width: 100%;">Register</button>
@@ -1551,32 +472,32 @@ tr:hover {
     </div>
 
     <!-- Payment Modal -->
-    <div id="paymentModal" class="modal">
+    <div id="paymentModal" class="modal" role="dialog" aria-labelledby="paymentTitle" aria-hidden="true">
         <div class="modal-content">
-            <span class="close" onclick="closeModal('paymentModal')">&times;</span>
-            <h2>Submit Payment Confirmation</h2>
+            <span class="close" onclick="closeModal('paymentModal')" aria-label="Close payment modal">&times;</span>
+            <h2 id="paymentTitle">Submit Payment Confirmation</h2>
             <form>
                 <div class="form-group">
-                    <label>Payment Method</label>
-                    <select>
+                    <label for="paymentMethod">Payment Method</label>
+                    <select id="paymentMethod">
                         <option>MTN Mobile Money</option>
                         <option>Orange Money</option>
                         <option>Bank Transfer</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>Amount Paid (LRD)</label>
-                    <input type="number" placeholder="Enter amount">
+                    <label for="paymentAmount">Amount Paid (LRD)</label>
+                    <input type="number" id="paymentAmount" placeholder="Enter amount">
                 </div>
                 <div class="form-group">
-                    <label>Transaction Reference</label>
-                    <input type="text" placeholder="Enter transaction ID">
+                    <label for="transactionRef">Transaction Reference</label>
+                    <input type="text" id="transactionRef" placeholder="Enter transaction ID">
                 </div>
                 <div class="form-group">
-                    <label>Payment Screenshot</label>
+                    <label for="paymentScreenshot">Payment Screenshot</label>
                     <div class="file-upload">
                         <p>📷 Upload payment screenshot</p>
-                        <input type="file" accept="image/*" style="display: none;">
+                        <input type="file" id="paymentScreenshot" accept="image/*" style="display: none;">
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Payment</button>
@@ -1585,146 +506,60 @@ tr:hover {
     </div>
 
     <!-- Report Modal -->
-    <div id="reportModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('reportModal')">&times;</span>
-            <h2>Report Listing</h2>
-            <form>
-                <div class="form-group">
-                    <label>Report Reason</label>
-                    <select>
-                        <option>Scam/Fraud</option>
-                        <option>Fake Item</option>
-                        <option>Duplicate Listing</option>
-                        <option>Inappropriate Content</option>
-                        <option>Overpriced</option>
-                        <option>Other</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Additional Details</label>
-                    <textarea placeholder="Please provide more details about why you're reporting this listing..."></textarea>
-                </div>
-                <button type="submit" class="btn btn-danger" style="width: 100%;">Submit Report</button>
-            </form>
-        </div>
-    </div>
 
     <script>
-        let isLoggedIn = false;
-        let currentUser = null;
-        let isChatbotOpen = false;
-
-        // Demo user login
-        function userLogin(event) {
-            event.preventDefault();
-            const email = document.getElementById('loginEmail').value;
-            const password = document.getElementById('loginPassword').value;
+        // Mobile menu toggle functionality
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuToggle = document.querySelector('.menu-toggle');
             
-            // Demo validation
-            if (email && password) {
-                isLoggedIn = true;
-                currentUser = {
-                    name: 'John Doe',
-                    email: email,
-                    phone: '+231 77 123 4567'
-                };
-                
-                showLoggedInView();
-                closeModal('loginModal');
-                alert('Login successful!');
+            if (mobileMenu.classList.contains('active')) {
+                mobileMenu.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
+                menuToggle.innerHTML = '☰';
+            } else {
+                mobileMenu.classList.add('active');
+                menuToggle.setAttribute('aria-expanded', 'true');
+                menuToggle.innerHTML = '✕';
             }
-            return false;
         }
 
-        // Demo user registration
-        function userRegister(event) {
-            event.preventDefault();
-            const name = document.getElementById('registerName').value;
-            const email = document.getElementById('registerEmail').value;
-            const phone = document.getElementById('registerPhone').value;
-            const password = document.getElementById('registerPassword').value;
+        // Close mobile menu when clicking on a link
+        function closeMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuToggle = document.querySelector('.menu-toggle');
             
-            if (name && email && phone && password) {
-                isLoggedIn = true;
-                currentUser = {
-                    name: name,
-                    email: email,
-                    phone: phone
-                };
-                
-                showLoggedInView();
-                closeModal('registerModal');
-                alert('Registration successful! Welcome to BuySell Liberia!');
+            mobileMenu.classList.remove('active');
+            menuToggle.setAttribute('aria-expanded', 'false');
+            menuToggle.innerHTML = '☰';
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuToggle = document.querySelector('.menu-toggle');
+            
+            if (!mobileMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+                closeMobileMenu();
             }
-            return false;
-        }
+        });
 
-        // Show logged in view
-        function showLoggedInView() {
-            document.getElementById('publicView').style.display = 'none';
-            document.getElementById('loggedInView').style.display = 'block';
-            document.getElementById('authButtons').style.display = 'none';
-            document.getElementById('userMenu').style.display = 'flex';
-            document.getElementById('userName').textContent = currentUser.name;
-        }
-
-        // Logout
-        function logout() {
-            isLoggedIn = false;
-            currentUser = null;
-            document.getElementById('publicView').style.display = 'block';
-            document.getElementById('loggedInView').style.display = 'none';
-            document.getElementById('authButtons').style.display = 'flex';
-            document.getElementById('userMenu').style.display = 'none';
-        }
-
-        // Require login for actions
-        function requireLogin(action) {
-            if (!isLoggedIn) {
-                alert(`Please login to ${action}. You can browse listings without logging in, but actions require an account.`);
-                showModal('loginModal');
-                return false;
+        // Close mobile menu on escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeMobileMenu();
             }
-            
-            // User is logged in, proceed with action
-            if (action === 'contact seller') {
-                alert('Opening message composer...');
-            } else if (action === 'report listing') {
-                showModal('reportModal');
-            } else if (action === 'start selling') {
-                showLoggedInView();
-                switchTab('create');
-            }
-            return true;
-        }
-
-        // Switch dashboard tabs
-        function switchTab(tabName) {
-            // Hide all tabs
-            document.querySelectorAll('.tab-content').forEach(tab => {
-                tab.style.display = 'none';
-            });
-            
-            // Remove active class from all tabs
-            document.querySelectorAll('.dashboard-tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            
-            // Show selected tab
-            document.getElementById(tabName + 'Tab').style.display = 'block';
-            
-            // Add active class to selected tab
-            event.target.classList.add('active');
-        }
+        });
 
         // Modal functions
         function showModal(modalId) {
             document.getElementById(modalId).style.display = 'block';
+            document.body.style.overflow = 'hidden';
         }
 
         function closeModal(modalId) {
             document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto';
         }
 
         // Close modal when clicking outside
@@ -1733,40 +568,131 @@ tr:hover {
             modals.forEach(modal => {
                 if (event.target === modal) {
                     modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
                 }
             });
         }
 
-        // Scroll to listings
+        // User authentication functions
+        function userLogin(event) {
+            event.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            // Simple validation
+            if (email && password) {
+                // Simulate login
+                document.getElementById('publicView').style.display = 'none';
+                document.getElementById('loggedInView').style.display = 'block';
+                document.getElementById('authButtons').style.display = 'none';
+                document.getElementById('userMenu').style.display = 'flex';
+                document.getElementById('userName').textContent = email.split('@')[0];
+                closeModal('loginModal');
+            }
+        }
+
+        function userRegister(event) {
+            event.preventDefault();
+            const name = document.getElementById('registerName').value;
+            const email = document.getElementById('registerEmail').value;
+            const phone = document.getElementById('registerPhone').value;
+            const password = document.getElementById('registerPassword').value;
+            
+            // Simple validation
+            if (name && email && phone && password) {
+                alert('Registration successful! Please login.');
+                closeModal('registerModal');
+                showModal('loginModal');
+            }
+        }
+
+        function logout() {
+            document.getElementById('publicView').style.display = 'block';
+            document.getElementById('loggedInView').style.display = 'none';
+            document.getElementById('authButtons').style.display = 'flex';
+            document.getElementById('userMenu').style.display = 'none';
+        }
+
+        function requireLogin(action) {
+            alert(`Please login to ${action}.`);
+            showModal('loginModal');
+        }
+
         function scrollToListings() {
             document.getElementById('listings').scrollIntoView({ behavior: 'smooth' });
         }
 
-        // AI Chatbot Functions
+        // Dashboard tab switching
+        function switchTab(tabName) {
+            // Hide all tab contents
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => {
+                content.style.display = 'none';
+            });
+            
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.dashboard-tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected tab content
+            document.getElementById(tabName + 'Tab').style.display = 'block';
+            
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+        }
+
+        // Chatbot functions
         function toggleChatbot() {
             const chatbotWindow = document.getElementById('chatbotWindow');
-            if (isChatbotOpen) {
+            if (chatbotWindow.style.display === 'flex') {
                 closeChatbot();
             } else {
-                openChatbot();
+                chatbotWindow.style.display = 'flex';
+                document.getElementById('chatInput').focus();
             }
         }
 
-        function openChatbot() {
-            const chatbotWindow = document.getElementById('chatbotWindow');
-            chatbotWindow.style.display = 'flex';
-            isChatbotOpen = true;
-            
-            // Focus on input
-            setTimeout(() => {
-                document.getElementById('chatInput').focus();
-            }, 100);
+        function closeChatbot() {
+            document.getElementById('chatbotWindow').style.display = 'none';
         }
 
-        function closeChatbot() {
-            const chatbotWindow = document.getElementById('chatbotWindow');
-            chatbotWindow.style.display = 'none';
-            isChatbotOpen = false;
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            
+            if (message) {
+                addMessage(message, 'user');
+                input.value = '';
+                
+                // Simulate AI response
+                setTimeout(() => {
+                    addMessage('Thank you for your message! I\'m here to help with any questions about BuySell Liberia.', 'ai');
+                }, 1000);
+            }
+        }
+
+        function sendQuickMessage(message) {
+            addMessage(message, 'user');
+            setTimeout(() => {
+                addMessage('I\'d be happy to help you with that! Please provide more details about your specific question.', 'ai');
+            }, 1000);
+        }
+
+        function addMessage(text, sender) {
+            const messagesContainer = document.getElementById('chatbotMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}`;
+            
+            const time = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+            messageDiv.innerHTML = `
+                <div>${text}</div>
+                <div class="message-time">${time}</div>
+            `;
+            
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
         }
 
         function handleChatKeyPress(event) {
@@ -1775,110 +701,10 @@ tr:hover {
             }
         }
 
-        function sendQuickMessage(message) {
-            document.getElementById('chatInput').value = message;
-            sendMessage();
-        }
-
-        function sendMessage() {
-            const input = document.getElementById('chatInput');
-            const message = input.value.trim();
-            
-            if (!message) return;
-            
-            // Add user message
-            addMessage(message, 'user');
-            
-            // Clear input
-            input.value = '';
-            
-            // Show typing indicator
-            showTypingIndicator();
-            
-            // Simulate AI response
-            setTimeout(() => {
-                hideTypingIndicator();
-                const aiResponse = generateAIResponse(message);
-                addMessage(aiResponse, 'ai');
-            }, 1000 + Math.random() * 2000);
-        }
-
-        function addMessage(message, type) {
-            const messagesContainer = document.getElementById('chatbotMessages');
-            const messageDiv = document.createElement('div');
-            messageDiv.className = `message ${type}`;
-            
-            const currentTime = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-            
-            messageDiv.innerHTML = `
-                <div>${message}</div>
-                <div class="message-time">${currentTime}</div>
-            `;
-            
-            messagesContainer.appendChild(messageDiv);
-            messagesContainer.scrollTop = messagesContainer.scrollHeight;
-        }
-
-        function showTypingIndicator() {
-            const typingIndicator = document.getElementById('typingIndicator');
-            typingIndicator.style.display = 'block';
-            
-            const messagesContainer = document.getElementById('chatbotMessages');
-            messagesContainer.scrollTop = messagesContainer.scrollHeight;
-        }
-
-        function hideTypingIndicator() {
-            const typingIndicator = document.getElementById('typingIndicator');
-            typingIndicator.style.display = 'none';
-        }
-
-        function generateAIResponse(userMessage) {
-            const message = userMessage.toLowerCase();
-            
-            // Predefined responses for common queries
-            const responses = {
-                'hello': 'Hello! How can I help you with BuySell Liberia today? 😊',
-                'hi': 'Hi there! I\'m here to assist you with any questions about our platform.',
-                'help': 'I can help you with:\n• Creating listings\n• Payment processes\n• Account management\n• Reporting issues\n• Platform features\n\nWhat would you like to know?',
-                'create listing': 'To create a listing:\n\n1. Click "Create Listing" in your dashboard\n2. Choose a category and location\n3. Add title, description, and price\n4. Upload up to 5 photos\n5. Add your contact information\n6. Submit for review\n\nYour listing will be reviewed by our team before going live! 📝',
-                'payment': 'We accept three payment methods:\n\n💳 MTN Money (+231 77 123 4567)\n🟠 Orange Money (+231 88 987 6543)\n🏦 Bank Transfer (Liberia Bank for Development)\n\nAfter payment, upload your receipt screenshot for verification. Our team will review and activate your features within 24 hours.',
-                'report': 'To report a listing:\n\n1. Click "Report" on any listing\n2. Select the reason (Scam, Fake, Duplicate, etc.)\n3. Add details about the issue\n4. Submit the report\n\nOur moderation team will review all reports within 24 hours. 🚨',
-                'account': 'For account help:\n\n• Reset password: Use "Forgot Password" on login\n• Update profile: Go to your dashboard settings\n• Account issues: Contact support@buysell.com\n• Login problems: Clear your browser cache\n\nNeed specific help with your account? 👤',
-                'registration': 'To register:\n\n1. Click "Register" in the top menu\n2. Enter your name, email, and phone\n3. Create a secure password\n4. Verify your email\n5. Start buying and selling!\n\nRegistration is free and takes less than 2 minutes! 🎉',
-                'features': 'BuySell Liberia offers:\n\n✅ Free listing creation\n✅ Direct messaging with buyers/sellers\n✅ Payment verification system\n✅ Report & safety features\n✅ Featured listing options\n✅ Business subscriptions\n✅ Multi-category marketplace\n\nAnything specific you\'d like to know about?',
-                'contact': 'You can reach us:\n\n📧 Email: support@buysell.com\n📞 Phone: +231 77 123 4567\n💬 Live chat: Right here!\n🕐 Hours: Monday-Friday, 8AM-6PM\n\nI\'m available 24/7 for instant help! 🤖',
-                'pricing': 'Our pricing:\n\n💰 Featured Listing: L$ 5,000 (7 days)\n🏢 Business Subscription: L$ 15,000/month\n📢 Ad Placement: L$ 2,500\n🎯 Premium Support: L$ 1,000\n\nAll payments are manually verified for security! 💳',
-                'location': 'We cover all 15 counties in Liberia:\n\n• Montserrado (Monrovia)\n• Grand Bassa (Buchanan)\n• Bong (Gbarnga)\n• Nimba (Sanniquellie)\n• And 11 more counties!\n\nSelect your location when creating listings to reach local buyers. 📍'
-            };
-            
-            // Find matching response
-            for (const [key, response] of Object.entries(responses)) {
-                if (message.includes(key)) {
-                    return response;
-                }
-            }
-            
-            // Default responses for unmatched queries
-            const defaultResponses = [
-                'I understand you\'re asking about "' + userMessage + '". Let me help you with that! For detailed assistance, you can:\n\n• Check our FAQ section\n• Contact support@buysell.com\n• Call +231 77 123 4567\n\nIs there a specific aspect I can help clarify?',
-                'Thanks for your question about "' + userMessage + '"! While I may not have all the details, I can connect you with our support team or help you find the right information. What specific help do you need?',
-                'I want to make sure I give you the best answer about "' + userMessage + '". Could you be more specific about what you\'d like to know? I can help with listings, payments, account issues, or platform features.',
-                'Great question! For detailed information about "' + userMessage + '", I recommend:\n\n• Browsing our help section\n• Contacting our support team\n• Exploring your user dashboard\n\nCan I help you with something specific right now?'
-            ];
-            
-            return defaultResponses[Math.floor(Math.random() * defaultResponses.length)];
-        }
-
-        // File upload handlers
+        // Initialize page
         document.addEventListener('DOMContentLoaded', function() {
-            const fileUploads = document.querySelectorAll('.file-upload');
-            fileUploads.forEach(upload => {
-                upload.addEventListener('click', function() {
-                    const input = this.querySelector('input[type="file"]');
-                    input.click();
-                });
-            });
+            // Set initial states
+            document.getElementById('mobileMenu').classList.remove('active');
+            document.querySelector('.menu-toggle').setAttribute('aria-expanded', 'false');
         });
     </script>
-</body>
-</html> 
